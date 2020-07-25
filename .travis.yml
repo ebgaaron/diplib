@@ -44,7 +44,7 @@ addons:
     packages:
       - libomp
       - glfw
-      - python@3.7
+      - python@3.8
     update: false
 branches:
   except:
