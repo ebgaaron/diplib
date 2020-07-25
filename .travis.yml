@@ -23,8 +23,6 @@ matrix:
       osx_image: xcode11.3
       compiler: clang
       env: DIP_CMAKE_OPTS=
-      before_install:
-        - brew install libomp glfw python@3.7
     - name: windows
       os: windows
       env: DIP_CMAKE_OPTS="-A x64"
@@ -42,6 +40,12 @@ addons:
       - freeglut3-dev
       - python3-dev
       - python3-pip
+  homebrew:
+    packages:
+      - libomp
+      - glfw
+      - python@3.7
+    update: false
 branches:
   except:
     - cris
