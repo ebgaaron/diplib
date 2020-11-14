@@ -33,7 +33,7 @@
 namespace dip {
 
 
-/// \defgroup geometry Geometric transformations
+/// \group geometry Geometric transformations
 /// \brief Geometric image transformations.
 ///
 /// \section interpolation_methods Interpolation methods
@@ -91,7 +91,7 @@ namespace dip {
 /// <li>R.G. Keys, "Cubic Convolution Interpolation for Digital Image Processing", IEEE Transactions on
 ///     Acoustics, Speech, and Signal Processing 29(6):1153-1160, 1981.
 /// \endliterature
-/// \{
+/// \addtogroup
 
 /// \brief Shifts the input image by an integer number of pixels, wrapping the pixels around.
 ///
@@ -914,7 +914,7 @@ inline Image JoinChannels(
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

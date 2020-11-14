@@ -48,7 +48,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 /// \brief A dynamic array type optimized for few elements.
@@ -620,7 +619,7 @@ class DIP_NO_EXPORT DimensionArray {
 // Compound assignment operator specializations
 //
 
-/// \cond
+#ifndef DIP_CONFIG_FAKE_DOCUMENTATION // This should never be defined when compiling!!!
 
 // The general case: cast rhs to type of lhs
 template< typename T >
@@ -663,7 +662,7 @@ inline DimensionArray< std::size_t >& DimensionArray< std::size_t >::operator-=(
    return *this;
 }
 
-/// \endcond
+#endif // DIP_CONFIG_FAKE_DOCUMENTATION
 
 
 //
@@ -937,7 +936,7 @@ inline double Distance( DimensionArray< T > const& v1, DimensionArray< T > const
    return std::sqrt( SquareDistance( v1, v2 ));
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

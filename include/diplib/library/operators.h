@@ -84,7 +84,6 @@ template< typename T1, typename T2 > inline Image name( Image const& in, T1&& lh
 
 
 /// \addtogroup math_arithmetic
-/// \{
 
 
 //
@@ -526,11 +525,10 @@ inline Image::View& operator^=( Image::View& lhs, T const& rhs ) {
 }
 
 
-/// \}
+/// \endgroup
 
 
 /// \addtogroup math_comparison
-/// \{
 
 
 //
@@ -651,7 +649,7 @@ inline Image operator>=( Image const& lhs, T const& rhs ) {
 }
 
 
-/// \}
+/// \endgroup
 
 
 #undef DIP_DEFINE_ARITHMETIC_OVERLOADS

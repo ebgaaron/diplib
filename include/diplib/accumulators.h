@@ -38,7 +38,6 @@ namespace dip {
 
 
 /// \addtogroup numeric
-/// \{
 
 
 /// \brief `%StatisticsAccumulator` computes population statistics by accumulating the first four central moments.
@@ -754,7 +753,7 @@ inline MomentAccumulator operator+( MomentAccumulator lhs, MomentAccumulator con
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

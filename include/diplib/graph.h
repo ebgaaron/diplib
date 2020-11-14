@@ -33,7 +33,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 /// \brief A non-directed, edge-weighted graph.
@@ -316,7 +315,7 @@ class DIP_NO_EXPORT LowestCommonAncestorSolver {
       std::shared_ptr< RangeMinimumQuery > rmq_; // Hidden implementation to avoid all that cruft in these headers...
 };
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

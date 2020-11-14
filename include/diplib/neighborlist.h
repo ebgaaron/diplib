@@ -33,7 +33,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 /// \brief Represents a metric to be used to create a `dip::NeighborList`
@@ -374,7 +373,7 @@ inline void swap( NeighborList::Iterator& v1, NeighborList::Iterator& v2 ) {
    v1.swap( v2 );
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

@@ -33,11 +33,10 @@
 namespace dip {
 
 
-/// \defgroup nonlinear Non-linear filters
+/// \group nonlinear Non-linear filters
 /// \ingroup filtering
 /// \brief Non-linear filters for noise reduction, detection, etc., excluding morphological filters.
-/// \{
-
+/// \addtogroup
 
 /// \brief Applies a percentile filter to `in`.
 ///
@@ -219,7 +218,7 @@ inline Image SelectionFilter(
 ///     The Netherlands, 2002.
 /// \endliterature
 ///
-/// \see dip::SelectionFilter.
+/// \see dip::SelectionFilter
 DIP_EXPORT void Kuwahara(
       Image const& in,
       Image& out,
@@ -850,7 +849,7 @@ inline Image BilateralFilter(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

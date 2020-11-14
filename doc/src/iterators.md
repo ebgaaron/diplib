@@ -1,27 +1,28 @@
-# Using iterators to implement filters {#using_iterators}
+\comment DIPlib 3.0
 
-[//]: # (DIPlib 3.0)
+\comment (c)2016-2020, Cris Luengo.
 
-[//]: # ([c]2016-2017, Cris Luengo.)
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
 
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
+
+\page using_iterators Using iterators to implement filters
 
 *DIPlib* provides a set of iterators that can be used to efficiently visit all
 pixels in an image, independently of the dimensionality of the image.
 These iterators can be used to implement filters and other monadic operators.
 This page shows how to use these iterators to write different types of image
 processing functionality. However, most of the filters in *DIPlib* are not written
-using these iterators, but using the functions in the `dip::Framework` namespace.
+using these iterators, but using the functions in the \ref dip::Framework namespace.
 Those functions take care of:
  - parallel processing,
  - overloading for different data types,
@@ -36,12 +37,12 @@ you can choose to use either an iterator or a framework function.
 \tableofcontents
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section iterate_one_image Visiting each pixel in a single image
 
 To loop over each pixel in an image and modify its value, you can use the
-`dip::ImageIterator`:
+\ref dip::ImageIterator :
 
 ```cpp
     DIP_THROW_IF( img.DataType() != dip::DT_UINT16, "Expecting 16-bit unsigned integer image" );
@@ -61,7 +62,7 @@ match expectation, you can convert it:
 
 To handle images of different data types with the same loop, write the loop in a
 templated function, then call the right version of the function with the
-`#DIP_OVL_CALL_REAL` macro or any of its relatives defined in `diplib/overload.h`:
+\ref DIP_OVL_CALL_REAL macro or any of its relatives defined in \ref "diplib/overload.h":
 
 ```cpp
     template< typename T >
@@ -77,13 +78,13 @@ templated function, then call the right version of the function with the
     }
 ```
 
-The `#DIP_OVL_CALL_REAL` macro will throw an exception if the image is of a type
+The \ref DIP_OVL_CALL_REAL macro will throw an exception if the image is of a type
 that does not correspond to the `REAL` group, so there is no need to test for that
 separately.
 
 A wholly different way of handling images of different data types is using the
-`dip::GenericImageIterator`, which is a simpler, non-templated version of the
-`dip::ImageIterator` that cannot be dereferenced, but instead provides a `void`
+\ref dip::GenericImageIterator, which is a simpler, non-templated version of the
+\ref dip::ImageIterator that cannot be dereferenced, but instead provides a `void`
 pointer to the sample. The code inside the loop must be able to handle such a
 pointer, so this is only useful in very specific circumstances.
 
@@ -121,7 +122,7 @@ and using the `[]` indexing operator yields the other tensor elements:
 ```
 
 Alternatively, iterate over the tensor elements using the corresponding
-iterator (see `dip::SampleIterator`):
+iterator (see \ref dip::SampleIterator):
 
 ```cpp
     dip::ImageIterator< T > it( img );
@@ -134,11 +135,12 @@ iterator (see `dip::SampleIterator`):
 </li>
 </ul>
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section iterate_two_images Processing an image using a separate output image
 
-The `dip::JointImageIterator` loops over multiple images at the same time. The images
+The \ref dip::JointImageIterator loops over multiple images at the same time. The images
 must all have the same sizes:
 
 ```cpp
@@ -158,18 +160,18 @@ same time.
 To access the various tensor elements, use the `it.InSample(index)`, `it.OutSample(index)`,
 or the generic `it.Sample<N>(index)` methods.
 
-There is also a `dip::GenericJointImageIterator`, which, just like
-`dip::GenericImageIterator`, is a version of the iterator that
+There is also a \ref dip::GenericJointImageIterator, which, just like
+\ref dip::GenericImageIterator, is a version of the iterator that
 provides a `void` pointer to each pixel.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section iterate_lines Processing an image line by line
 
 Some processing requires access to a whole image line at the time. Both the
-`dip::ImageIterator` and the `dip::JointImageIterator` allow to specify one
-dimension over which is not looped. In combination with the `dip::LineIterator`,
+\ref dip::ImageIterator and the \ref dip::JointImageIterator allow to specify one
+dimension over which is not looped. In combination with the \ref dip::LineIterator,
 one can create functions that process one line at a time:
 
 ```cpp
@@ -220,7 +222,7 @@ Note that separable filters use such line by line operations along each dimensio
 to compose full filters.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section iterate_neighborhood Applying an arbitrary neighborhood filter
 
@@ -268,7 +270,7 @@ of the image, instead of only over each pixel in the image, allows for simple im
 many efficient algorithms.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section iterate_slices Processing an image slice by slice
 
@@ -279,9 +281,9 @@ which dimensions are to be processed, one can choose to process only the first t
 With other filters one can set the size of the neighborhood to 1 along the 3<sup>rd</sup>
 dimension, so that effectively no filtering is applied in that direction. But a few
 filters are written explicitly for 2D images, or do not make it possible to restrict
-processing dimensions. `dip::EuclideanSkeleton` is an example of the latter. The
+processing dimensions. \ref dip::EuclideanSkeleton is an example of the latter. The
 skeleton is always computed across the full image. To apply it to each of the slices
-in the time series one can use the `dip::ImageSliceIterator`:
+in the time series one can use the \ref "dip::ImageSliceIterator":
 
 ```cpp
     dip::ImageSliceIterator it( img, 2 );
@@ -318,11 +320,12 @@ loop using indexing:
 The difference in efficiency might or might not be important depending on
 the cost of the function being applied to each 2D slice.
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section iterate_tensor Processing an image tensor element by tensor element
 
-The `dip::ImageSliceIterator` can also be used to iterate over the tensor elements
+The \ref dip::ImageSliceIterator can also be used to iterate over the tensor elements
 of an image. In this case, dereferencing the iterator yields a scalar image
 corresponding to `img[ ii ]`. The two following pieces of code are equivalent:
 

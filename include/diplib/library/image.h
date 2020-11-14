@@ -56,7 +56,6 @@ class DIP_NO_EXPORT GenericJointImageIterator;  // in `generic_iterators.h`, inc
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 //
@@ -227,18 +226,15 @@ class DIP_NO_EXPORT Image {
       //
 
       /// \name Constructors
-      /// \{
 
       /// \brief The default-initialized image is 0D (an empty sizes array), one tensor element, dip::DT_SFLOAT,
       /// and raw (it has no data segment).
       Image() = default;
 
-      /// \cond
       // Copy constructor, move constructor and destructor are all default.
       Image( Image const& ) = default;
       Image( Image&& ) = default;
       ~Image() = default;
-      /// \endcond
 
       /// \brief Copy assignment
       ///
@@ -359,8 +355,6 @@ class DIP_NO_EXPORT Image {
       /// sizes, not sample values.
       explicit Image( FloatArray const& values, dip::DataType dt = DT_SFLOAT );
 
-      /// \cond
-
       // This one is to disambiguate calling with a single initializer list. We don't mean UnsignedArray, we mean Pixel.
       template< typename T, typename = std::enable_if_t< IsNumericType< T >::value >>
       explicit Image( std::initializer_list< T > values ) : Image( Pixel( values )) {}
@@ -368,8 +362,6 @@ class DIP_NO_EXPORT Image {
       // This one is to disambiguate calling with a single initializer list. We don't mean UnsignedArray, we mean Pixel.
       template< typename T, typename = std::enable_if_t< IsNumericType< T >::value >>
       explicit Image( std::initializer_list< T > values, dip::DataType dt ) : Image( Pixel( values ), dt ) {}
-
-      /// \endcond
 
       /// \brief A `dip::Image::View` implicitly converts to an `%Image`.
       Image( View const& view );
@@ -465,14 +457,11 @@ class DIP_NO_EXPORT Image {
          return out;
       }
 
-      /// \}
-
       //
       // Sizes
       //
 
       /// \name Sizes
-      /// \{
 
       /// \brief Get the number of spatial dimensions.
       dip::uint Dimensionality() const {
@@ -506,21 +495,16 @@ class DIP_NO_EXPORT Image {
          sizes_ = d;
       }
 
-      /// \cond
       // Sets the sizes of the image. Do not use this function unless you know what you're doing.
       void SetSizesUnsafe( UnsignedArray const& d ) {
          sizes_ = d;
       }
-      /// \endcond
-
-      /// \}
 
       //
       // Strides
       //
 
       /// \name Strides
-      /// \{
 
       /// \brief Get a const reference to the strides array.
       IntegerArray const& Strides() const {
@@ -654,14 +638,11 @@ class DIP_NO_EXPORT Image {
       /// \see dip::Image::HasSimpleStride, dip::Image::GetSimpleStrideAndOrigin, dip::Image::HasContiguousData
       DIP_EXPORT bool HasSameDimensionOrder( Image const& other ) const;
 
-      /// \}
-
       //
       // Tensor
       //
 
       /// \name Tensor
-      /// \{
 
       /// \brief Get the tensor sizes. The array returned can have 0, 1 or
       /// 2 elements, as those are the allowed tensor dimensionalities.
@@ -725,21 +706,17 @@ class DIP_NO_EXPORT Image {
          tensor_.SetVector( nelems );
       }
 
-      /// \cond
       // Sets the tensor sizes. Do not use this function unless you know what you're doing.
       void SetTensorSizesUnsafe( dip::uint nelems ) {
          tensor_.SetVector( nelems );
       }
-      /// \endcond
 
-      /// \}
 
       //
       // Data type
       //
 
       /// \name Data type
-      /// \{
 
       // Note: This function is the reason we refer to the DataType class as
       // dip::DataType everywhere in this file.
@@ -755,14 +732,11 @@ class DIP_NO_EXPORT Image {
          dataType_ = dt;
       }
 
-      /// \}
-
       //
       // Color space
       //
 
       /// \name Color space
-      /// \{
 
       /// \brief Get the image's color space name.
       String const& ColorSpace() const {
@@ -786,14 +760,11 @@ class DIP_NO_EXPORT Image {
          colorSpace_.clear();
       }
 
-      /// \}
-
       //
       // Pixel size
       //
 
       /// \name Pixel size
-      /// \{
 
       // Note: This function is the reason we refer to the PixelSize class as
       // dip::PixelSize everywhere in this file.
@@ -875,14 +846,11 @@ class DIP_NO_EXPORT Image {
          return pixelSize_.ToPixels( in );
       }
 
-      /// \}
-
       //
       // Utility functions
       //
 
       /// \name Utility functions
-      /// \{
 
       /// \brief Compare properties of an image against a template, either
       /// returns true/false or throws an error.
@@ -988,15 +956,12 @@ class DIP_NO_EXPORT Image {
          swap( externalInterface_, other.externalInterface_ );
       }
 
-      /// \}
-
       //
       // Data
       // Defined in src/library/image_data.cpp
       //
 
       /// \name Data
-      /// \{
 
       /// \brief Get pointer to the data segment.
       ///
@@ -1062,7 +1027,7 @@ class DIP_NO_EXPORT Image {
       /// If `true`, writing into this image will change the data in
       /// `other`, and vice-versa.
       ///
-      /// \see dip::Image::SharesData, dip::Image::IsIdenticalView, dip::Image::IsOverlappingView, dip::Image::Alias
+      /// \see dip::Image::SharesData, dip::Image::IsIdenticalView, dip::Image::IsOverlappingView, dip::Alias
       DIP_EXPORT bool Aliases( Image const& other ) const;
 
       /// \brief Determine if `this` and `other` offer an identical view of the
@@ -1302,15 +1267,12 @@ class DIP_NO_EXPORT Image {
          return externalInterface_ != nullptr;
       }
 
-      /// \}
-
       //
       // Pointers, offsets, indices
       // Defined in src/library/image_data.cpp
       //
 
       /// \name Pointers, offsets, indices
-      /// \{
 
       /// \brief Get pointer to the first sample in the image, the first tensor
       /// element at coordinates (0,0,0,...). The image must be forged.
@@ -1318,8 +1280,6 @@ class DIP_NO_EXPORT Image {
          DIP_THROW_IF( !IsForged(), E::IMAGE_NOT_FORGED );
          return origin_;
       }
-
-      /// \cond
 
       // Sets the pointer to the first sample in the image. Do not use this function
       // unless you know what you're doing.
@@ -1332,8 +1292,6 @@ class DIP_NO_EXPORT Image {
       void ShiftOriginUnsafe( dip::sint offset ) {
          origin_ = static_cast< uint8* >( origin_ ) + offset * static_cast< dip::sint >( dataType_.SizeOf() );
       }
-
-      /// \endcond
 
       /// \brief Get a pointer to the pixel given by the offset.
       ///
@@ -1578,8 +1536,6 @@ class DIP_NO_EXPORT Image {
       // Function defined in src/generation/coordinates.cpp for convenience.
       DIP_EXPORT FloatArray GetCenter( String const& mode = "right" ) const;
 
-      /// \}
-
       //
       // Modifying geometry of a forged image without data copy
       // Defined in src/library/image_manip.cpp
@@ -1588,7 +1544,6 @@ class DIP_NO_EXPORT Image {
       /// \name Reshaping forged image
       /// These functions change the image object, providing a differently-shaped version of the same data.
       /// No data is copied, and the image contains the same set of samples as before the method call.
-      /// \{
 
       /// \brief Permute dimensions.
       ///
@@ -2099,8 +2054,6 @@ class DIP_NO_EXPORT Image {
       /// \brief Returns the `dip::RangeArray` indexing data that corresponds to the result of `dip::Image::Crop`.
       DIP_EXPORT RangeArray CropWindow( UnsignedArray const& sizes, String const& cropLocation ) const;
 
-      /// \}
-
       //
       // Creating views of the data -- indexing without data copy
       // Defined in src/library/image_indexing.cpp
@@ -2109,7 +2062,6 @@ class DIP_NO_EXPORT Image {
       /// \name Indexing without data copy
       /// These functions create a different view of the data contained in the image. The output
       /// is usually a `dip::Image::View` or `dip::Image::Pixel` object. No data is copied.
-      /// \{
 
       /// \brief Extract a tensor element, `indices` must have one or two elements. The image must be forged.
       View operator[]( UnsignedArray const& indices ) const;
@@ -2284,15 +2236,12 @@ class DIP_NO_EXPORT Image {
          return out;
       }
 
-      /// \}
-
       //
       // Getting/setting pixel values, data copies
       // Defined in src/library/image_data.cpp
       //
 
       /// \name Setting pixel values, copying
-      /// \{
 
       /// \brief Extends the image by padding with zeros.
       ///
@@ -2359,7 +2308,7 @@ class DIP_NO_EXPORT Image {
       ///
       /// Any external interface is not preserved. Use `dip::Copy` to control the data allocation for the output image.
       ///
-      /// \see `dip::Image::QuickCopy`
+      /// \see dip::Image::QuickCopy
       Image Copy() const {
          Image out;
          out.Copy( *this );
@@ -2464,14 +2413,12 @@ class DIP_NO_EXPORT Image {
          return *this;
       }
 
-      /// \cond
       // This one is to disambiguate calling with a single initializer list. We don't mean UnsignedArray, we mean Pixel.
       template< typename T, typename = std::enable_if_t< IsNumericType< T >::value >>
       Image& operator=( std::initializer_list< T > values ) {
          Fill( Pixel( values ));
          return *this;
       }
-      /// \endcond
 
       /// Returns the value of the first sample in the first pixel in the image as the given numeric type.
       template< typename T, typename = std::enable_if_t< IsNumericType< T >::value >>
@@ -2481,7 +2428,7 @@ class DIP_NO_EXPORT Image {
       /// For a complex-valued image, the modulus (absolute value) is returned.
       operator FloatArray() const;
 
-      /// \}
+      /// \endname
 
    private:
 
@@ -2727,7 +2674,7 @@ inline ImageConstRefArray CreateImageConstRefArray( ImageArray const& imar ) {
    return out;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

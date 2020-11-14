@@ -34,7 +34,6 @@ namespace dip {
 
 
 /// \addtogroup iterators
-/// \{
 
 
 /// \brief An iterator to iterate over pixels along a straight line.
@@ -228,7 +227,7 @@ inline void swap( BresenhamLineIterator& v1, BresenhamLineIterator& v2 ) {
 ///
 /// Note that when an image is stripped or reforged, all its iterators are invalidated.
 ///
-/// \see \ref using_iterators, ImageIterator, GenericJointImageIterator
+/// \see using_iterators, ImageIterator, GenericJointImageIterator
 template< typename T = dfloat >
 class DIP_NO_EXPORT GenericImageIterator {
    public:
@@ -502,7 +501,7 @@ inline void swap( GenericImageIterator< T >& v1, GenericImageIterator< S >& v2 )
    v1.swap( v2 );
 }
 
-/// \cond
+#ifndef DIP_CONFIG_FAKE_DOCUMENTATION // This should never be defined when compiling!!!
 
 inline GenericImageIterator< dip::dfloat > Image::begin() {
    return GenericImageIterator< dip::dfloat >( *this );
@@ -512,7 +511,7 @@ inline GenericImageIterator< dip::dfloat > Image::end() {
    return GenericImageIterator< dip::dfloat >();
 }
 
-/// \endcond
+#endif // DIP_CONFIG_FAKE_DOCUMENTATION
 
 
 /// \brief A data-type--agnostic version of `dip::JointImageIterator`. Use this iterator only to write code that
@@ -552,7 +551,7 @@ inline GenericImageIterator< dip::dfloat > Image::end() {
 ///
 /// Note that when an image is stripped or reforged, all its iterators are invalidated.
 ///
-/// \see \ref using_iterators, JointImageIterator, GenericImageIterator
+/// \see using_iterators, JointImageIterator, GenericImageIterator
 template< dip::uint N, typename T = dfloat >
 class DIP_NO_EXPORT GenericJointImageIterator {
    public:
@@ -992,7 +991,7 @@ inline void swap( GenericJointImageIterator< N, T >& v1, GenericJointImageIterat
 /// Additionally, it behaves like a RandomAccessIterator except for the indexing operator `[]`,
 /// which would be less efficient in use and therefore it's better to not offer it.
 ///
-/// \see \ref using_iterators, ImageTensorIterator, ImageIterator, JointImageIterator, GenericImageIterator, GenericJointImageIterator
+/// \see using_iterators, ImageTensorIterator, ImageIterator, JointImageIterator, GenericImageIterator, GenericJointImageIterator
 class DIP_NO_EXPORT ImageSliceIterator {
    public:
       using iterator_category = std::forward_iterator_tag; ///< %Iterator category
@@ -1214,7 +1213,7 @@ inline ImageSliceIterator ImageSliceEndIterator( Image const& image, dip::uint p
 /// Note that when the original image is stripped or reforged, the iterator is still valid and
 /// holds on to the original data segment.
 ///
-/// \see \ref using_iterators, ImageSliceIterator, ImageIterator, JointImageIterator, GenericImageIterator, GenericJointImageIterator
+/// \see using_iterators, ImageSliceIterator, ImageIterator, JointImageIterator, GenericImageIterator, GenericJointImageIterator
 inline ImageSliceIterator ImageTensorIterator( Image const& image ) {
    Image tmp = image;
    dip::uint dim = tmp.Dimensionality();
@@ -1223,7 +1222,7 @@ inline ImageSliceIterator ImageTensorIterator( Image const& image ) {
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

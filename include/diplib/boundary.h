@@ -32,11 +32,10 @@
 namespace dip {
 
 
-/// \defgroup boundary Boundary
+/// \group boundary Boundary
 /// \ingroup infrastructure
 /// \brief Handling image boundary extension for filtering
-/// \{
-
+/// \addtogroup
 
 /// \brief Enumerates various ways of extending image data beyond its boundary.
 ///
@@ -272,7 +271,7 @@ inline void ExtendRegion(
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

@@ -38,7 +38,6 @@ namespace dip {
 
 
 /// \addtogroup transform
-/// \{
 
 
 /// \brief An object that encapsulates the Discrete Fourier Transform (DFT).
@@ -126,7 +125,7 @@ DIP_EXPORT size_t GetOptimalDFTSize( size_t size0 );
 constexpr size_t maximumDFTSize = static_cast< size_t >( std::numeric_limits< int >::max() );
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

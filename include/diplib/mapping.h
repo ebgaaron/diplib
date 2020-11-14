@@ -31,10 +31,9 @@
 namespace dip {
 
 
-/// \defgroup mapping Grey-value mapping
+/// \group mapping Grey-value mapping
 /// \brief Operators that map image grey values.
-/// \{
-
+/// \addtogroup
 
 /// \brief Clips the sample values in `in` to a specified range.
 ///
@@ -299,7 +298,7 @@ inline Image HistogramMatching(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 
 } // namespace dip

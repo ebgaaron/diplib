@@ -35,9 +35,9 @@
 namespace dip {
 
 
-/// \defgroup histograms Histograms
+/// \group histograms Histograms
 /// \brief Histograms and related functionality.
-/// \{
+/// \addtogroup
 
 namespace detail {
 inline dip::sint FindBin( dfloat value, dfloat lowerBound, dfloat binSize, dip::uint nBins ) {
@@ -882,7 +882,7 @@ DIP_EXPORT Distribution PerObjectHistogram(
 );
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

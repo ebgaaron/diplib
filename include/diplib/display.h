@@ -33,10 +33,9 @@
 namespace dip {
 
 
-/// \defgroup display Display
-/// \brief %Image display
-/// \{
-
+/// \group display Display
+/// \brief Image display
+/// \addtogroup
 
 /// \brief Encapsulates state of an image in a display window, and provides the functionality for converting the
 /// image to a form suitable for display.
@@ -44,7 +43,7 @@ namespace dip {
 /// An object is created for a particular image; the image cannot be replaced. Different display options can then
 /// be set. When the `dip::ImageDisplay::Output` method is called, a 1D or 2D, grey-value or RGB, UINT8 image is
 /// prepared for display. A const reference to this image is returned. The image is updated every time the
-/// `%Output` method is called, not when display options are set. The display options are designed to be
+/// `Output` method is called, not when display options are set. The display options are designed to be
 /// settable by a user using the image display window.
 ///
 /// For a scalar input image, the output is always scalar (grey-value). For a color image, if it can be converted
@@ -680,7 +679,7 @@ inline Image MarkLabelEdges(
    return out;
 }
 
-// \}
+/// \endgroup
 
 } // namespace dip
 

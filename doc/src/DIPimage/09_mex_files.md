@@ -1,21 +1,22 @@
-# Writing MEX-files that use DIPlib {#sec_dum_mex_files}
+\comment DIPlib 3.0
 
-[//]: # (DIPlib 3.0)
+\comment (c)2017-2020, Cris Luengo.
+\comment Based on original DIPimage user manual: (c)1999-2014, Delft University of Technology.
 
-[//]: # ([c]2017-2019, Cris Luengo.)
-[//]: # (Based on original DIPimage usre manual: [c]1999-2014, Delft University of Technology.)
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
 
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
+
+\page sec_dum_mex_files Writing MEX-files that use DIPlib
 
 \m_footernavigation
 
@@ -34,7 +35,7 @@ We exclusively use [the C API](https://www.mathworks.com/help/matlab/cc-mx-matri
 
 \section sec_dum_mex_files_dml The DIPlib-MATLAB interface
 
-The header file `dip_matlab_interface.h` contains a series of functions that can
+The header file \ref "dip_matlab_interface.h" contains a series of functions that can
 be used to convert *MATLAB* types to *DIPlib* types and vice versa. These functions
 make it very easy to write a *MATLAB* interface to *DIPlib* functions (and this is
 its main purpose), but could be used for other purposes too.
@@ -43,15 +44,15 @@ All its functionality is in the <tt>\ref dml</tt> namespace.
 
 \subsection sec_dum_mex_files_dml_output_images Output images
 
-The main trick that it can do is prepare a `dip::Image` object that, when forged
+The main trick that it can do is prepare a \ref dip::Image object that, when forged
 by a *DIPlib* function, will have *MATLAB* allocate the memory for the pixels,
 such that no copy needs to be made when this image is returned to MATLAB. For
-this, create an object of type `dml::MatlabInterface`. Its `dml::MatlabInterface::NewImage`
+this, create an object of type \ref dml::MatlabInterface. Its \ref dml::MatlabInterface::NewImage
 function creates a raw image that can be forged (or passed as output image to
-any *DIPlib* function). The `dml::GetArray(dip::Image const&, bool)` function
+any *DIPlib* function). The \ref dml::GetArray(dip::Image const&, bool) function
 can then be used to obtain a pointer to the `mxArray` containing a `dip_image`
-object with the same pixel data. Note that the `%dml::MatlabInterface` object
-needs to exist throughout this process, as it owns the data until `%dml::GetArray`
+object with the same pixel data. Note that the `dml::MatlabInterface` object
+needs to exist throughout this process, as it owns the data until `dml::GetArray`
 extracts it.
 
 This is a skeleton MEX-file that outputs such an image:
@@ -77,13 +78,13 @@ This is a skeleton MEX-file that outputs such an image:
     }
 ```
 
-The documentation to `dml::MatlabInterface` gives more details about how to use
+The documentation to \ref dml::MatlabInterface gives more details about how to use
 the images created in this way.
 
 \subsection sec_dum_mex_files_dml_input_images Input images
 
-The function `dml::GetImage` takes an `mxArray` pointer, checks it for validity,
-and returns a `dip::Image` object that shares data with the `mxArray` (except in
+The function \ref dml::GetImage takes an `mxArray` pointer, checks it for validity,
+and returns a \ref dip::Image object that shares data with the `mxArray` (except in
 exceptional circumstances: complex-valued numeric arrays must be copied because
 their storage is different in *MATLAB* and *DIPlib*; complex-valued `dip_image`
 objects are not copied).
@@ -94,7 +95,7 @@ For example, one can add the following line to the `mexFunction` above:
     dip::Image const in = ( nrhs > 0 ) ? dml::GetImage( prhs[ 0 ] ) : dip::Image();
 ```
 
-This line calls `dml::GetImage` only if `prhs[0]` actually exists. If not, it
+This line calls \ref dml::GetImage only if `prhs[0]` actually exists. If not, it
 creates a raw image object. You should always check `nrhs` before reading any of
 the `prhs` elements. Likewise, you should always check `nlhs` before assigning
 to any of the `plhs` elements except the first one (`plhs` always has at least
@@ -103,12 +104,12 @@ one element, even if `nlhs == 0`).
 \subsection sec_dum_mex_files_dml_input_data Converting other types
 
 There exist similar `Get...` functions for just about every *DIPlib* type, for example
-`dml::GetFloat`, `dml::GetFloatArray` or `dml::GetFloatCoordinateArray`. See
+\ref dml::GetFloat, \ref dml::GetFloatArray or \ref dml::GetFloatCoordinateArray. See
 the documentation to the <tt>\ref dml</tt> namespace for a complete list. These
 take an `mxArray` pointer as input, validate it, and output a value of the appropriate
 type. If the validation fails, an exception is thrown.
 
-There exist also a series of `dml::GetArray` functions that do the reverse process:
+There exist also a series of \ref dml::GetArray functions that do the reverse process:
 they take a value of any type typically returned by a *DIPlib* function, and
 convert it to an `mxArray`, returning its pointer. Note that *MATLAB* always takes
 care of freeing any `mxArray` objects created by the MEX-file, there is no need
@@ -119,7 +120,7 @@ copy, other data is typically not large enough to matter).
 
 For more complex examples of MEX-files, see
 [`examples/external_interfaces/matlab_mex_example.cpp`](https://github.com/DIPlib/diplib/tree/master/examples/external_interfaces/matlab_mex_example.cpp),
-as well as the DIPimage MEX-files in
+as well as the *DIPimage* MEX-files in
 [`dipimage/private/`](https://github.com/DIPlib/diplib/tree/master/dipimage/private) and
 [`dipimage/@dip_image/private`](https://github.com/DIPlib/diplib/tree/master/dipimage/%40dip_image/private).
 

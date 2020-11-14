@@ -40,7 +40,6 @@ namespace dip {
 
 
 /// \addtogroup iterators
-/// \{
 
 
 /// \brief An iterator to iterate over samples in a tensor, or pixels on an image line.
@@ -181,7 +180,7 @@ template< typename T >
 using ConstSampleIterator = SampleIterator< T const >;
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

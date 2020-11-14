@@ -1,20 +1,21 @@
-# About DIPlib 3 {#mainpage}
+\comment DIPlib 3.0
 
-[//]: # (DIPlib 3.0)
+\comment (c)2016-2020, Cris Luengo.
 
-[//]: # ([c]2016-2019, Cris Luengo.)
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
 
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
+
+\mainpage About DIPlib 3
 
 \section main_introduction Introduction
 
@@ -65,7 +66,7 @@ There are many other unique things about *DIPlib*, we encourage you to
 explore the documentation to learn more about it. A good place to start
 are the following documentation pages:
 
-- The `dip::Image` class, everything else revolves around it.
+- The \ref dip::Image class, everything else revolves around it.
 - All functionality is categorized into <a href="modules.html">modules</a>.
 - \ref using_iterators, in case existing algorithms are not sufficient.
 - \ref design, might help understand the library architecture.

@@ -41,7 +41,6 @@ inline int omp_get_max_threads() { return 1; }
 namespace dip {
 
 /// \addtogroup infrastructure
-/// \{
 
 
 /// \brief Sets the maximum number of threads to be using in computations.
@@ -76,7 +75,7 @@ DIP_EXPORT dip::uint GetNumberOfThreads();
 // threshold for single vs multithreaded computation, not a threshold per thread created.
 constexpr dip::uint threadingThreshold = 70000;
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

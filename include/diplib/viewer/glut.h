@@ -32,7 +32,6 @@
 namespace dip { namespace viewer {
 
 /// \addtogroup viewer
-/// \{
 
 /// Simple GLUT window manager.
 class DIPVIEWER_CLASS_EXPORT GLUTManager : public Manager
@@ -124,7 +123,7 @@ class DIPVIEWER_CLASS_EXPORT GLUTManager : public Manager
     }
 };
 
-/// \}
+/// \endgroup
 
 }} // namespace dip::viewer
 

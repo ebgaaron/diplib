@@ -33,7 +33,6 @@ namespace dip {
 
 
 /// \addtogroup mapping
-/// \{
 
 
 /// \brief Encapsulates the concept of the look-up table (LUT).
@@ -216,7 +215,7 @@ class DIP_NO_EXPORT LookupTable{
 };
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

@@ -34,7 +34,6 @@ namespace dip {
 
 
 /// \addtogroup measurement
-/// \{
 
 
 /// \brief Contains the various %Feret diameters as returned by `dip::ConvexHull::Feret` and `dip::ChainCode::Feret`.
@@ -658,16 +657,11 @@ class DIP_NO_EXPORT ConvexHull {
       dip::Polygon polygon_;
 };
 
-/// \}
-
 // This function cannot be written inside the dip::Polygon class because it needs to know about the dip::ConvexHull
 // class, which in turn needs to know about the dip::Polygon class.
 inline dip::ConvexHull Polygon::ConvexHull() const {
    return dip::ConvexHull( *this );
 }
-
-/// \addtogroup measurement
-/// \{
 
 
 //
@@ -908,7 +902,7 @@ ChainCode DIP_EXPORT GetSingleChainCode(
       dip::uint connectivity = 2       ///< Connectivity, see \ref connectivity
 );
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

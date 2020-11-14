@@ -32,10 +32,10 @@ namespace dip {
 /// \brief Contains all functionality for \ref javaio.
 namespace javaio {
 
-/// \defgroup javaio DIPjavaio
-/// \ingroup file_io interfaces
+/// \group javaio DIPjavaio
+/// \ingroup file_io
 /// \brief An interface to Java file I/O functionality
-/// \{
+/// \addtogroup
 
 constexpr char const* bioformatsInterface = "org/diplib/BioFormatsInterface";
 
@@ -59,7 +59,7 @@ inline Image ImageReadJavaIO(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace javaio
 

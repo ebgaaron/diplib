@@ -39,7 +39,7 @@
 namespace dip_opencv {
 
 
-/// \defgroup dip_opencv_interface DIPlib-OpenCV interface
+/// \group dip_opencv_interface DIPlib-OpenCV interface
 /// \ingroup interfaces
 /// \brief Functions to convert images to and from *OpenCV*.
 ///
@@ -75,8 +75,7 @@ namespace dip_opencv {
 /// where a binary image is intended. This clashes with *DIPlib*'s binary type, which is of the same size but is
 /// expected to contain only 0 and 1 values. The functions `dip_opencv::FixBinaryImageForDip` and
 /// `dip_opencv::FixBinaryImageForOpenCv` fix up binary images for processing in either library.
-/// \{
-
+/// \addtogroup
 
 /// \brief Creates a *DIPlib* image around an *OpenCV* `cv::Mat`, without taking ownership of the data.
 ///
@@ -490,7 +489,7 @@ inline void FixBinaryImageForOpenCv( dip::Image& img ) {
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip_opencv
 

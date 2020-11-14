@@ -35,7 +35,6 @@ struct GLFWwindow;
 namespace dip { namespace viewer {
 
 /// \addtogroup viewer
-/// \{
 
 /// Simple GLFW window manager.
 class DIPVIEWER_CLASS_EXPORT GLFWManager : public Manager
@@ -177,7 +176,7 @@ class DIPVIEWER_CLASS_EXPORT GLFWManager : public Manager
     }
 };
 
-/// \}
+/// \endgroup
 
 }} // namespace dip::viewer
 

@@ -49,7 +49,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 //
@@ -74,11 +73,10 @@ using uint = std::size_t;  ///< An integer type to be used for sizes and the lik
 constexpr dip::uint maxint = static_cast< dip::uint >( std::numeric_limits< dip::sint >::max() );
 
 
-/// \}
+/// \endgroup
 
 
 /// \addtogroup types
-/// \{
 
 
 //
@@ -336,11 +334,10 @@ template<> struct RealTypeCalculator< dcomplex > { using type = dfloat; };
 /// \brief The type to use in calculations when a real-valued type is needed. Matches `dip::DataType::SuggestReal`.
 template< typename T > using RealType = typename detail::RealTypeCalculator< std::remove_cv_t< std::remove_reference_t< T >>>::type;
 
-/// \}
+/// \endgroup
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 //
@@ -660,6 +657,7 @@ constexpr Options< T > operator+( T a, Options< T > b ) noexcept {
    return b + a;
 }
 
+/// \macro DIP_DECLARE_OPTIONS(EnumType,OptionsType)
 /// \brief Declare a type used to pass enumerated options to a function or class.
 ///
 /// This macro is used as follows:
@@ -790,7 +788,7 @@ struct RegressionParameters {
    dfloat slope = 0.0;     ///< slope
 };
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

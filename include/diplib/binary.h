@@ -32,11 +32,10 @@
 namespace dip {
 
 
-/// \defgroup binary Binary image filters
+/// \group binary Binary image filters
 /// \ingroup filtering
 /// \brief Processing binary images, including binary mathematical morphology.
-/// \{
-
+/// \addtogroup
 
 /// \brief Binary morphological dilation operation.
 ///
@@ -1082,7 +1081,7 @@ DIP_EXPORT Interval BoundaryPixelInterval2D();
 /// This leads to octagonal shapes.
 DIP_EXPORT IntervalArray ConvexHullInterval2D();
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

@@ -35,14 +35,13 @@ namespace dip {
 // Forward declaration, defined in chain_code.h
 struct DIP_NO_EXPORT Polygon;
 
-/// \defgroup generation Generation
+/// \group generation Generation
 /// \brief Filling images with generated data, and creating test images.
 
-
-/// \defgroup generation_drawing Drawing
+/// \group generation_drawing Drawing
 /// \ingroup generation
 /// \brief Drawing in images
-/// \{
+/// \addtogroup
 
 /// \brief Sets the pixels at the border of `out` to `value`.
 ///
@@ -287,13 +286,13 @@ DIP_EXPORT void DrawBandlimitedBox(
       dfloat truncation = 3.0
 );
 
-/// \}
+/// \endgroup
 
 
-/// \defgroup generation_test Test image generation
+/// \group generation_test Test image generation
 /// \ingroup generation
 /// \brief Generating images with test objects or functions
-/// \{
+/// \addtogroup
 
 /// \brief Maps input values through an error function, can be used to generate arbitrary band-limited objects.
 ///
@@ -764,13 +763,13 @@ inline Image CreateRandomGrid(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 
-/// \defgroup generation_coordinates Coordinate generation
+/// \group generation_coordinates Coordinate generation
 /// \ingroup generation
 /// \brief Generating images with coordinates
-/// \{
+/// \addtogroup
 
 /// \brief Fills an image with a ramp function.
 ///
@@ -1154,13 +1153,13 @@ inline Image CityBlockDistanceToPoint(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 
-/// \defgroup generation_noise Noise generation
+/// \group generation_noise Noise generation
 /// \ingroup generation
 /// \brief Adding noise to an image
-/// \{
+/// \addtogroup
 
 /// \brief Adds uniformly distributed white noise to the input image.
 ///
@@ -1174,7 +1173,7 @@ inline Image CityBlockDistanceToPoint(
 /// identical state before calling this function, the output image will be different depending on the number of
 /// threads used.
 ///
-/// \see dip::UniformRandomGenerator.
+/// \see dip::UniformRandomGenerator
 DIP_EXPORT void UniformNoise(
       Image const& in,
       Image& out,
@@ -1205,7 +1204,7 @@ inline Image UniformNoise(
 /// identical state before calling this function, the output image will be different depending on the number of
 /// threads used.
 ///
-/// \see dip::GaussianRandomGenerator.
+/// \see dip::GaussianRandomGenerator
 DIP_EXPORT void GaussianNoise( Image const& in, Image& out, Random& random, dfloat variance = 1.0 );
 inline Image GaussianNoise( Image const& in, Random& random, dfloat variance = 1.0 ) {
    Image out;
@@ -1229,7 +1228,7 @@ inline Image GaussianNoise( Image const& in, Random& random, dfloat variance = 1
 /// identical state before calling this function, the output image will be different depending on the number of
 /// threads used.
 ///
-/// \see dip::PoissonRandomGenerator.
+/// \see dip::PoissonRandomGenerator
 DIP_EXPORT void PoissonNoise( Image const& in, Image& out, Random& random, dfloat conversion = 1.0 );
 inline Image PoissonNoise( Image const& in, Random& random, dfloat conversion = 1.0 ) {
    Image out;
@@ -1286,7 +1285,7 @@ inline Image PoissonNoise( Image const& in, Random& random, dfloat conversion = 
 /// identical state before calling this function, the output image will be different depending on the number of
 /// threads used.
 ///
-/// \see dip::BinaryRandomGenerator.
+/// \see dip::BinaryRandomGenerator
 DIP_EXPORT void BinaryNoise(
       Image const& in,
       Image& out,
@@ -1322,7 +1321,7 @@ inline Image BinaryNoise(
 /// identical state before calling this function, the output image will be different depending on the number of
 /// threads used.
 ///
-/// \see dip::UniformRandomGenerator.
+/// \see dip::UniformRandomGenerator
 DIP_EXPORT void SaltPepperNoise(
       Image const& in,
       Image& out,
@@ -1401,7 +1400,7 @@ inline Image ColoredNoise(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 
 inline void FillPoissonPointProcess(
@@ -1418,6 +1417,5 @@ inline void FillPoissonPointProcess(
 
 
 } // namespace dip
-
 
 #endif // DIP_GENERATION_H

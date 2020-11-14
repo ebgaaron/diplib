@@ -88,9 +88,9 @@ std::complex< T > Round( std::complex< T > v, int digits ) {
 
 } // namespace detail
 
-/// \defgroup testing Testing and debugging
+/// \group testing Testing and debugging
 /// \brief Tools for testing and debugging.
-/// \{
+/// \addtogroup
 
 /// \brief Outputs pixel values of a small image to `stdout`.
 ///
@@ -320,7 +320,7 @@ inline std::ostream& operator<<(
    return os;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace testing
 

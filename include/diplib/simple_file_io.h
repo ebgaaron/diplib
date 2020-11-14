@@ -37,7 +37,6 @@ namespace dip {
 
 
 /// \addtogroup file_io
-/// \{
 
 /// \brief Reads the image in a file `filename`, and puts it in `out`.
 ///
@@ -180,7 +179,7 @@ inline void ImageWrite(
    }
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

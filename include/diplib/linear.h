@@ -33,10 +33,10 @@
 namespace dip {
 
 
-/// \defgroup linear Linear filters
+/// \group linear Linear filters
 /// \ingroup filtering
 /// \brief Linear smoothing, sharpening and derivative filters.
-/// \{
+/// \addtogroup
 
 /// \brief Describes a 1D filter
 ///
@@ -697,7 +697,7 @@ inline Image Dyz(
 /// By default uses Gaussian derivatives in the computation. Set `method = "finitediff"` for finite difference
 /// approximations to the gradient. See `dip::Derivative` for more information on the other parameters.
 ///
-/// \see dip::Derivative, dip::Hessian, dip::GradientMagnitude, dip::GradientDirection2D
+/// \see dip::Derivative, dip::Hessian, dip::GradientMagnitude, dip::GradientDirection
 DIP_EXPORT void Gradient(
       Image const& in,
       Image& out,
@@ -925,7 +925,7 @@ inline Image Hessian(
 ///    | -1  -1  -1 |
 /// ```
 ///
-/// \see dip::Derivative, dip::Gradient, dip::Hessian, dip::Trace.
+/// \see dip::Derivative, dip::Gradient, dip::Hessian, dip::Trace
 DIP_EXPORT void Laplace(
       Image const& in,
       Image& out,
@@ -1146,7 +1146,7 @@ inline Image UnsharpMask(
 /// This function is relatively slow compared to `dip::GaborIIR`, even for small sigmas. Prefer to use the IIR
 /// implementation.
 ///
-/// \see dip::Gabor2D, dip::GaborIIR.
+/// \see dip::Gabor2D, dip::GaborIIR
 DIP_EXPORT void GaborFIR(
       Image const& in,
       Image& out,
@@ -1192,7 +1192,7 @@ inline Image GaborFIR(
 ///     IEEE Transactions on Signal Processing 50(11):2798-2805, 2002.
 /// \endliterature
 ///
-/// \see dip::Gabor2D, dip::GaborFIR.
+/// \see dip::Gabor2D, dip::GaborFIR
 DIP_EXPORT void GaborIIR(
       Image const& in,
       Image& out,
@@ -1459,7 +1459,7 @@ inline Image MeanShiftVector(
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

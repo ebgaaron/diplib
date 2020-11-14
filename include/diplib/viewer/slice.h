@@ -86,7 +86,6 @@ class DIPVIEWER_CLASS_EXPORT SliceViewPort : public ViewPort
 };
 
 /// \addtogroup viewer
-/// \{
 
 /// \brief Interactive nD tensor image viewer.
 class DIPVIEWER_CLASS_EXPORT SliceViewer : public Viewer
@@ -176,7 +175,7 @@ class DIPVIEWER_CLASS_EXPORT SliceViewer : public Viewer
     DIPVIEWER_EXPORT void calculateTextures();
 };
 
-/// \}
+/// \endgroup
 
 }} // namespace dip::viewer
 

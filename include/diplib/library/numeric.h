@@ -43,13 +43,12 @@
 namespace dip {
 
 
-/// \defgroup numeric Numeric algorithms and constants
+/// \group numeric Numeric algorithms and constants
 /// \ingroup infrastructure
 /// \brief Functions and constants to be used in numeric computation, unrelated to images.
 ///
 /// These functions and constants are made available when including `diplib.h`.
-/// \{
-
+/// \addtogroup
 
 /// \brief The constant &pi;.
 constexpr dfloat pi = 3.14159265358979323846264338327950288;
@@ -696,7 +695,7 @@ DIP_EXPORT std::vector< GaussianParameters > GaussianMixtureModel(
       Option::Periodicity periodicity = Option::Periodicity::NOT_PERIODIC
 );
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

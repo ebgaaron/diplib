@@ -40,17 +40,15 @@ struct DIP_NO_EXPORT ChainCode;
 struct DIP_NO_EXPORT Polygon;
 class DIP_NO_EXPORT ConvexHull;
 
-/// \defgroup measurement Measurement
+/// \group measurement Measurement
 /// \brief The measurement infrastructure and functionality.
 ///
 /// The `dip::MeasurementTool` class provides the main interface to the
 /// functionality in this module. Quantification results are encapsulated in
 /// an object of the `dip::Measurement` class.
-/// \{
-
+/// \addtogroup
 
 /// \brief Contains classes that implement the measurement features.
-/// \ingroup measurement
 namespace Feature {
 
 /// \brief The types of measurement features
@@ -100,8 +98,6 @@ using ValueInformationArray = std::vector< ValueInformation >;
 using ObjectIdToIndexMap = std::map< dip::uint, dip::uint >;
 
 /// \brief Contains measurement results, as obtained through `dip::MeasurementTool::Measure`.
-///
-/// \ingroup measurement
 ///
 /// A newly constructed `%Measurement` will accept calls to `AddFeature`, and
 /// `AddObjectIDs`. Once the object is set up with all objects and features needed, a call
@@ -823,8 +819,6 @@ class DIP_CLASS_EXPORT Composite : public Base {
 
 /// \brief Performs measurements on images.
 ///
-/// \ingroup measurement
-///
 /// The %MeasurementTool class knows about defined measurement features, and can apply them to an
 /// image through its `dip::MeasurementTool::Measure` method.
 ///
@@ -1146,7 +1140,7 @@ DIP_EXPORT MinMaxAccumulator MaximumAndMinimum( Measurement::IteratorFeature con
 DIP_EXPORT StatisticsAccumulator SampleStatistics( Measurement::IteratorFeature const& featureValues );
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

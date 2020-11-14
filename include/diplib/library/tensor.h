@@ -40,7 +40,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 //
@@ -695,7 +694,7 @@ inline std::ostream& operator<<(
    return os;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

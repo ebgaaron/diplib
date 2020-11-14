@@ -36,11 +36,10 @@
 namespace dip {
 
 
-/// \defgroup random Random
+/// \group random Random
 /// \ingroup infrastructure
 /// \brief Pseudo-random generator and probability distributions.
-/// \{
-
+/// \addtogroup
 
 /// \brief A pseudo-random number generator with excellent statistical properties, and it's also fast.
 ///
@@ -65,7 +64,7 @@ namespace dip {
 /// Satisfies the requirements for [*UniformRandomBitGenerator*](https://en.cppreference.com/w/cpp/named_req/UniformRandomBitGenerator),
 /// and hence can be used in all algorithms of the standard library that require such an object.
 ///
-/// \see dip::UniformRandomGenerator, dip::GaussianRandomGenerator, dip::PoissonRandomGenerator, dip::BinaryRandomGenerator.
+/// \see dip::UniformRandomGenerator, dip::GaussianRandomGenerator, dip::PoissonRandomGenerator, dip::BinaryRandomGenerator
 class DIP_NO_EXPORT Random {
 #if defined(__SIZEOF_INT128__) || defined(DIP_CONFIG_ALWAYS_128_PRNG)
       using Engine = pcg64;
@@ -142,7 +141,7 @@ class DIP_NO_EXPORT Random {
 /// The constructor takes and stores a reference to a `dip::Random` object, which is used
 /// to produce the randomness. That object needs to exist for as long as this one exists.
 ///
-/// \see dip::GaussianRandomGenerator, dip::PoissonRandomGenerator, dip::BinaryRandomGenerator.
+/// \see dip::GaussianRandomGenerator, dip::PoissonRandomGenerator, dip::BinaryRandomGenerator
 class DIP_NO_EXPORT UniformRandomGenerator {
       using Distribution = std::uniform_real_distribution< dfloat >;
    public:
@@ -168,7 +167,7 @@ class DIP_NO_EXPORT UniformRandomGenerator {
 /// The constructor takes and stores a reference to a `dip::Random` object, which is used
 /// to produce the randomness. That object needs to exist for as long as this one exists.
 ///
-/// \see dip::UniformRandomGenerator, dip::PoissonRandomGenerator, dip::BinaryRandomGenerator.
+/// \see dip::UniformRandomGenerator, dip::PoissonRandomGenerator, dip::BinaryRandomGenerator
 class DIP_NO_EXPORT GaussianRandomGenerator {
       using Distribution = std::normal_distribution< dfloat >;
    public:
@@ -194,7 +193,7 @@ class DIP_NO_EXPORT GaussianRandomGenerator {
 /// The constructor takes and stores a reference to a `dip::Random` object, which is used
 /// to produce the randomness. That object needs to exist for as long as this one exists.
 ///
-/// \see dip::UniformRandomGenerator, dip::GaussianRandomGenerator, dip::BinaryRandomGenerator.
+/// \see dip::UniformRandomGenerator, dip::GaussianRandomGenerator, dip::BinaryRandomGenerator
 class DIP_NO_EXPORT PoissonRandomGenerator {
       using Distribution = std::poisson_distribution< dip::uint >;
    public:
@@ -220,7 +219,7 @@ class DIP_NO_EXPORT PoissonRandomGenerator {
 /// The constructor takes and stores a reference to a `dip::Random` object, which is used
 /// to produce the randomness. That object needs to exist for as long as this one exists.
 ///
-/// \see dip::UniformRandomGenerator, dip::GaussianRandomGenerator, dip::PoissonRandomGenerator.
+/// \see dip::UniformRandomGenerator, dip::GaussianRandomGenerator, dip::PoissonRandomGenerator
 class DIP_NO_EXPORT BinaryRandomGenerator {
    public:
 
@@ -242,7 +241,7 @@ class DIP_NO_EXPORT BinaryRandomGenerator {
 };
 
 
-/// \}
+/// \endgroup
 
 
 } // namespace dip

@@ -1,24 +1,23 @@
-\ingroup infrastructure
+\comment DIPlib 3.0 viewer
 
-\defgroup viewer DIPviewer
+\comment (c)2017, Wouter Caarls.
+
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
+
+
+\group viewer DIPviewer
 \ingroup display
 \brief Interactive image display.
-
-[//]: # (DIPlib 3.0 viewer)
-
-[//]: # ([c]2017, Wouter Caarls.)
-
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
 
 \section viewer_introduction Introduction
 
@@ -27,32 +26,32 @@ of intermediate results. Its main purpose is as a debugging tool. It exists
 in its own library, which must be linked separately if used. The
 viewer contains two main classes
 
-1. `dip::viewer::ImageViewer`, to visualize 2D 8-bit RGB images
-2. `dip::viewer::SliceViewer`, to visualize 2D slices of nD (tensor) images
+1. \ref dip::viewer::ImageViewer, to visualize 2D 8-bit RGB images
+2. \ref dip::viewer::SliceViewer, to visualize 2D slices of nD (tensor) images
 
 More than one viewer can be active at the same time, and the separate
 windows are managed by a primitive window manager. Two libraries are
 supported for window management:
 
-1. **GLUT** (`dip::viewer::GLUTManager`):
+1. **GLUT** (\ref dip::viewer::GLUTManager):
    The venerable *OpenGL Utility Toolkit*, in the form of
    [*FreeGLUT*](http://freeglut.sourceforge.net).
 
-2. **GLFW** (`dip::viewer::GLFWManager`):
+2. **GLFW** (\ref dip::viewer::GLFWManager):
    [*GLFW*](http://www.glfw.org/) is more modern than *GLUT*, and better supported
    by MacOS. Its disadvantage is that it requires the user to poll an event handler
    from the main thread of the program, something that is baked into the MacOS
    *Cocoa* framework.
 
-To use the `dip::viewer::ImageViewer`, the image must first be converted to 8-bit RGB,
-for example using the `dip::ImageDisplay` class. It does not have a user
+To use the \ref dip::viewer::ImageViewer, the image must first be converted to 8-bit RGB,
+for example using the \ref dip::ImageDisplay class. It does not have a user
 interface, and just shows the image.
 
 \section viewer_ui User interface
 
 ![SliceViewer showing the chromo3d.ics test image](viewer.png)
 
-`dip::viewer::SliceViewer` is more elaborate. Its user interface consists of four
+\ref dip::viewer::SliceViewer is more elaborate. Its user interface consists of four
 main parts: The main visualization window, the control panel, the histogram,
 and the status bar.
 
@@ -212,14 +211,14 @@ There are also a few keyboard shortcuts:
 
 \section viewer_example Usage example
 
-The viewer is most easily used through the `dip::viewer` namespace. Simply
+The viewer is most easily used through the \ref dip::viewer namespace. Simply
 call
 
 ```cpp
     dip::viewer::Show( image );
 ```
 
-after including `dipviewer.h` to show an image in the slice viewer. After
+after including \ref "dipviewer.h" to show an image in the slice viewer. After
 all images have been shown this way, you can call
 
 ```cpp
@@ -233,7 +232,7 @@ instead call
     dip::viewer::Draw();
 ```
 
-periodically. Make sure to call `dip::viewer::Spin( )` when you're done to
+periodically. Make sure to call \ref dip::viewer::Spin when you're done to
 ensure a clean exit.
 
 See `examples/cpp/viewer.cpp` for a usage example of the full interface.

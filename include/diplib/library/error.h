@@ -41,11 +41,10 @@
 namespace dip {
 
 
-/// \defgroup error Error management
+/// \group error Error management
 /// \ingroup infrastructure
 /// \brief Exception classes and error management functionality
-/// \{
-
+/// \addtogroup
 
 /// \brief Base exception class. All exceptions thrown in *DIPlib* are derived of this class.
 ///
@@ -66,7 +65,7 @@ class DIP_CLASS_EXPORT Error : public std::exception {
       /// exception. Some calling functions will catch such an exception, add its name to the stack trace,
       /// and re-throw the exception.
       ///
-      /// \see DIP_ADD_STACK_TRACE, DIP_TRY, DIP_CATCH
+      /// \see DIP_ADD_STACK_TRACE, DIP_START_STACK_TRACE, DIP_END_STACK_TRACE, DIP_STACK_TRACE_THIS
       char const* what() const noexcept override {
          return message_.c_str();
       }
@@ -201,7 +200,7 @@ constexpr char const* ILLEGAL_FLAG_COMBINATION = "Illegal flag combination";
 // Test and throw exception
 //
 
-/// \def DIP_ADD_STACK_TRACE(error)
+/// \macro DIP_ADD_STACK_TRACE(error)
 /// \brief Adds information from current function (including source file and location within file) to the `dip::Error`.
 ///
 /// This macro is useful for building a stack trace. If you want a stack trace, each function must catch `dip::Error`,
@@ -219,7 +218,7 @@ constexpr char const* ILLEGAL_FLAG_COMBINATION = "Illegal flag combination";
 ///     }
 /// ```
 ///
-/// The `#DIP_START_STACK_TRACE`, `#DIP_END_STACK_TRACE` and `DIP_STACK_TRACE_THIS` macros help build this code.
+/// The \ref DIP_START_STACK_TRACE, \ref DIP_END_STACK_TRACE and \ref DIP_STACK_TRACE_THIS macros help build this code.
 /// When compiling with the CMake configuration flag `DIP_ENABLE_STACK_TRACE` set to `OFF`, these macros don't do
 /// anything. Turn the option off if your application would make no use of the stack trace, as building the stack
 /// trace does incur some runtime cost.
@@ -250,22 +249,27 @@ constexpr char const* ILLEGAL_FLAG_COMBINATION = "Illegal flag combination";
 #endif // DIP_CONFIG_ENABLE_STACK_TRACE
 
 
+/// \macro DIP_THROW(str)
 /// \brief Throw a `dip::ParameterError`.
 #define DIP_THROW( str ) DIP_THROW_INTERNAL( dip::ParameterError, str )
 
+/// \macro DIP_THROW_INVALID_FLAG(str)
 /// \brief Throw a `dip::ParameterError` that reads "Invalid flag: <flag>".
 #define DIP_THROW_INVALID_FLAG( flag ) DIP_THROW( "Invalid flag: " + std::string( flag ))
 
+/// \macro DIP_THROW_IF(str)
 /// \brief Test a condition, throw a `dip::ParameterError` if the condition is met.
 #define DIP_THROW_IF( test, str ) if( test ) DIP_THROW( str )
 
+/// \macro DIP_THROW_RUNTIME(str)
 /// \brief Throw a `dip::RunTimeError`.
 #define DIP_THROW_RUNTIME( str ) DIP_THROW_INTERNAL( dip::RunTimeError, str )
 
+/// \macro DIP_THROW_ASSERTION(str)
 /// \brief Throw a `dip::AssertionError`.
 #define DIP_THROW_ASSERTION( str ) DIP_THROW_INTERNAL( dip::AssertionError, str )
 
-/// \def DIP_ASSERT(test)
+/// \macro DIP_ASSERT(test)
 /// \brief Test a condition, throw a `dip::AssertionError` if the condition is not met.
 ///
 /// If the CMake variable `DIP_ENABLE_ASSERT` is set to `OFF` during compilation, this macro is does nothing:
@@ -288,12 +292,12 @@ constexpr char const* ILLEGAL_FLAG_COMBINATION = "Illegal flag combination";
 #endif // DIP_CONFIG_ENABLE_ASSERT
 
 
-/// \def DIP_START_STACK_TRACE
+/// \macro DIP_START_STACK_TRACE
 /// \brief Starts a try/catch block that builds a stack trace when an exception is thrown.
 ///
 /// To build a stack trace, some library functions catch *DIPlib* exceptions, add their name and other info to it,
 /// then re-throw. To simplify this mechanism and make it easier to future changes, this macro and its partner
-/// `#DIP_END_STACK_TRACE` are used by these library functions. Use then as follows:
+/// \ref DIP_END_STACK_TRACE are used by these library functions. Use then as follows:
 ///
 /// ```cpp
 ///     DIP_START_STACK_TRACE
@@ -301,21 +305,21 @@ constexpr char const* ILLEGAL_FLAG_COMBINATION = "Illegal flag combination";
 ///     DIP_END_STACK_TRACE
 /// ```
 ///
-/// This expands to the exact same code as shown under `#DIP_ADD_STACK_TRACE`, but with an additional `catch`
+/// This expands to the exact same code as shown under \ref DIP_ADD_STACK_TRACE, but with an additional `catch`
 /// statement that catches `std::exception`, and throws a `dip::RunTimeError` with the original exception's `what()`
 /// string.
 ///
-/// NOTE! `DIP_START_STACK_TRACE` starts a try/catch block, which must be closed with `#DIP_END_STACK_TRACE` to
+/// NOTE! `DIP_START_STACK_TRACE` starts a try/catch block, which must be closed with \ref DIP_END_STACK_TRACE to
 /// prevent malformed syntax. Thus you should never use one of these two macros without the other one.
 ///
 /// When compiling with the CMake configuration flag `DIP_ENABLE_STACK_TRACE` set to `OFF`, these macros don't do
 /// anything. Turn the option off if your application would make no use of the stack trace, as building the stack
 /// trace does incur some runtime cost.
 
-/// \def DIP_END_STACK_TRACE
-/// \brief Ends a try/catch block that builds a stack trace when an exception is thrown. See `#DIP_START_STACK_TRACE`.
+/// \macro DIP_END_STACK_TRACE
+/// \brief Ends a try/catch block that builds a stack trace when an exception is thrown. See \ref DIP_START_STACK_TRACE.
 
-/// \def DIP_STACK_TRACE_THIS
+/// \macro DIP_STACK_TRACE_THIS
 /// \brief Encapsulates a statement in a try/catch block that builds a stack trace when an exception is thrown.
 ///
 /// To build a stack trace, some library functions catch *DIPlib* exceptions, add their name and other info to it,
@@ -333,7 +337,7 @@ constexpr char const* ILLEGAL_FLAG_COMBINATION = "Illegal flag combination";
 ///     DIP_END_STACK_TRACE
 /// ```
 ///
-/// See `#DIP_START_STACK_TRACE` for more information.
+/// See \ref DIP_START_STACK_TRACE for more information.
 
 #ifdef DIP_CONFIG_ENABLE_STACK_TRACE
 
@@ -353,7 +357,7 @@ constexpr char const* ILLEGAL_FLAG_COMBINATION = "Illegal flag combination";
 
 #endif // DIP_CONFIG_ENABLE_STACK_TRACE
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

@@ -157,7 +157,6 @@ protected:
 };
 
 /// \addtogroup viewer
-/// \{
 
 /// \brief Shared pointer to a Window
 typedef std::shared_ptr<Window> WindowPtr;
@@ -219,7 +218,7 @@ class DIPVIEWER_EXPORT Manager
     virtual void setWindowSize(Window* window, int width, int height) = 0;
 };
 
-/// \}
+/// \endgroup
 
 }} // namespace dip::viewer
 

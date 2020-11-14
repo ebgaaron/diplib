@@ -37,7 +37,7 @@
 /// \brief The `%dip_vigra` namespace contains the interface between *Vigra* and *DIPlib*.
 namespace dip_vigra {
 
-/// \defgroup dip_vigra_interface DIPlib-Vigra interface
+/// \group dip_vigra_interface DIPlib-Vigra interface
 /// \ingroup interfaces
 /// \brief Functions to convert images to and from *Vigra*.
 ///
@@ -61,7 +61,7 @@ namespace dip_vigra {
 /// not possible to write a non-templated function that creates a `vigra::MultiArray` object. Consequently, a
 /// `dip::ExternalInterface` would be very limited in usefulness, so we don't define one. The *DIPlib-Vigra*
 /// interface is therefore less easy to use than, for example, the \ref dip_opencv_interface.
-/// \{
+/// \addtogroup
 
 namespace detail {
 
@@ -162,7 +162,7 @@ inline vigra::MultiArray< Dimensionality, PixelType > CopyDipToVigra( dip::Image
    return output;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip_vigra
 

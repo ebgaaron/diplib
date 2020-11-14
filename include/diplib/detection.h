@@ -32,7 +32,7 @@
 namespace dip {
 
 
-/// \defgroup detection Detection
+/// \group detection Detection
 /// \brief %Feature detection algorithms.
 ///
 /// For edge detection see:
@@ -46,11 +46,10 @@ namespace dip {
 ///  - `dip::Laplace`
 ///  - `dip::Tophat`
 
-
-/// \defgroup detection_circles Circle detectors
+/// \group detection_circles Circle detectors
 /// \ingroup detection
 /// \brief Circle detection algorithms
-/// \{
+/// \addtogroup
 
 /// \brief Hough transform for circles in 2D binary images.
 ///
@@ -204,12 +203,12 @@ inline Image RadonTransformCircles(
 }
 
 
-/// \}
+/// \endgroup
 
-/// \defgroup detection_corners Corner detectors
+/// \group detection_corners Corner detectors
 /// \ingroup detection
 /// \brief Corner detection algorithms
-/// \{
+/// \addtogroup
 
 /// \brief Harris corner detector
 ///
@@ -377,15 +376,15 @@ inline Image WangBradyCornerDetector(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 
-/// \defgroup detection_lines Line detectors
+/// \group detection_lines Line detectors
 /// \ingroup detection
 /// \brief Line detection algorithms
 ///
 /// See `dip::MonogenicSignalAnalysis` for yet another way to detect lines.
-/// \{
+/// \addtogroup
 
 /// \brief Frangi vessel detector, single scale (Hessian based)
 ///
@@ -541,7 +540,7 @@ inline Image RORPOLineDetector(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

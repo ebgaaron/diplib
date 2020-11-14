@@ -40,7 +40,6 @@
 namespace dip {
 
 /// \addtogroup infrastructure
-/// \{
 
 
 //
@@ -780,7 +779,7 @@ DIP_EXPORT bool operator>=( Image::Pixel const& lhs, Image::Pixel const& rhs );
 template< typename T, typename = std::enable_if_t< IsNumericType< T >::value >>
 bool operator>=( Image::Pixel const& lhs, T const& rhs ) { return operator>=( lhs, Image::Pixel{ rhs } ); }
 
-/// \cond
+#ifndef DIP_CONFIG_FAKE_DOCUMENTATION // This should never be defined when compiling!!!
 
 template< typename T >
 Image::Pixel& Image::Pixel::operator+=( T const& rhs ) { return *this = operator+( *this, rhs ); }
@@ -812,7 +811,7 @@ Image::Sample& Image::Sample::operator^=( T const& rhs ) { return *this = operat
 // This dip::Image::Sample constructor depends on the definition of dip::Image::Pixel
 inline Image::Sample::Sample( Image::Pixel const& pixel ) : origin_( pixel.Origin() ), dataType_( pixel.DataType() ) {}
 
-/// \endcond
+#endif // DIP_CONFIG_FAKE_DOCUMENTATION
 
 /// \brief You can output a `dip::Image::Pixel` to `std::cout` or any other stream.
 /// It is printed as a sequence of values, prepended with "Pixel with values:".
@@ -1217,7 +1216,7 @@ class Image::View::Iterator {
       // TODO: maybe we can have a different version of the iterator that takes a reference (or pointer).
 };
 
-/// \}
+/// \endgroup
 
 
 //

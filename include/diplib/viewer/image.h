@@ -72,7 +72,6 @@ class DIPVIEWER_CLASS_EXPORT ImageViewPort : public ViewPort
 };
 
 /// \addtogroup viewer
-/// \{
 
 /// Non-interactive 2D RGB image viewer.
 class DIPVIEWER_CLASS_EXPORT ImageViewer : public Viewer
@@ -159,7 +158,7 @@ class DIPVIEWER_CLASS_EXPORT ImageViewer : public Viewer
     DIPVIEWER_EXPORT void draw() override;
 };
 
-/// \}
+/// \endgroup
 
 }} // namespace dip::viewer
 

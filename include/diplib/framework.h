@@ -43,7 +43,7 @@ class DIP_NO_EXPORT PixelTableOffsets;
 namespace Framework {
 
 
-/// \defgroup frameworks Frameworks
+/// \group frameworks Frameworks
 /// \ingroup infrastructure
 /// \brief Functions that form the basis of most pixel-based processing in *DIPlib*.
 ///
@@ -60,7 +60,7 @@ namespace Framework {
 ///  - The Scan framework, to process individual pixels across multiple input and output images: `dip::Framework::Scan`.
 ///  - The Separable framework, to apply separable filters: `dip::Framework::Separable`.
 ///  - The Full framework, to apply non-separable filters: `dip::Framework::Full`.
-/// \{
+/// \addtogroup
 
 
 // Maximum number of pixels in a buffer for the scan framework
@@ -909,7 +909,7 @@ class DIP_EXPORT FullLineFilter {
       virtual ~FullLineFilter() = default;
 };
 
-/// \brief %Framework for filtering of images with an arbitrary shape neighborhood.
+/// \brief Framework for filtering of images with an arbitrary shape neighborhood.
 ///
 /// The function object `lineFilter` is called for each image line,
 /// with input and output buffers either pointing directly to the
@@ -1014,7 +1014,7 @@ DIP_EXPORT void Full(
       FullOptions opts = {}            ///< Options to control how `lineFilter` is called
 );
 
-/// \}
+/// \endgroup
 
 } // namespace Framework
 } // namespace dip

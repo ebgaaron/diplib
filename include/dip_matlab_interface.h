@@ -65,23 +65,19 @@ extern "C" {
 #include "diplib/histogram.h"    // Definition of dip::Histogram::Configuration
 
 /// \file
-/// \brief This file should be included in each MEX-file. It defines the `#dml` namespace.
+/// \brief This file should be included in each MEX-file. It defines the \ref dml namespace.
 
 
-/// \brief The `%dml` namespace contains the interface between MATLAB and *DIPlib*.
+/// \brief The `dml` namespace contains the interface between MATLAB and *DIPlib*.
 ///
 /// The functions and classes defined in this namespace are meant to be used in MATLAB MEX-files.
 namespace dml {
 
-/// \defgroup interfaces Interfaces
-/// \brief Interfaces between DIPlib and other libraries/packages
 
-/// \defgroup dip_matlab_interface DIPlib-MATLAB interface
+/// \group dip_matlab_interface DIPlib-MATLAB interface
 /// \ingroup interfaces
 /// \brief Functions to convert image data, function parameters and other arrays to and from MATLAB.
-///
-/// \{
-
+/// \addtogroup
 
 // These are the names of the properties we get/set in the dip_image class in MATLAB:
 constexpr char const* imageClassName = "dip_image";
@@ -1709,7 +1705,7 @@ T GetPreference( dip::String const& preference ) {
    return detail::GetValueFromArray< T >( out );
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dml
 

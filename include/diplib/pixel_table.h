@@ -33,7 +33,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 class DIP_NO_EXPORT PixelTable; // forward declaration, it's defined a little lower down.
@@ -455,7 +454,7 @@ inline void swap( PixelTable::iterator& v1, PixelTable::iterator& v2 ) {
    v1.swap( v2 );
 }
 
-/// \cond
+#ifndef DIP_CONFIG_FAKE_DOCUMENTATION // This should never be defined when compiling!!!
 
 inline PixelTable::iterator PixelTable::begin() const {
    return iterator( *this );
@@ -465,7 +464,7 @@ inline PixelTable::iterator PixelTable::end() const {
    return iterator::end( *this );
 }
 
-/// \endcond
+#endif // DIP_CONFIG_FAKE_DOCUMENTATION
 
 
 /// \brief An iterator that visits each of the neighborhood's pixels in turn.
@@ -582,7 +581,7 @@ inline std::vector< dip::sint > PixelTableOffsets::Offsets() const {
 
 /// \endcond
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

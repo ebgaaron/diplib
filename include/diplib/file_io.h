@@ -32,9 +32,9 @@
 namespace dip {
 
 
-/// \defgroup file_io File I/O
+/// \group file_io File I/O
 /// \brief Reading images from files and writing them to files.
-/// \{
+/// \addtogroup
 
 /// \brief A data structure with information about an image file.
 struct FileInformation {
@@ -412,7 +412,7 @@ inline String FileAddExtension(
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

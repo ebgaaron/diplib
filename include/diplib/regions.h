@@ -35,12 +35,11 @@
 namespace dip {
 
 
-/// \defgroup regions Labeled regions
+/// \group regions Labeled regions
 /// \brief Label connected components and process labeled images.
 ///
 /// Labeled images are of any unsigned integer type.
-/// \{
-
+/// \addtogroup
 
 /// \brief Labels the connected components in a binary image
 ///
@@ -287,7 +286,7 @@ DIP_EXPORT Graph RegionAdjacencyGraph( Image const& labels, String const& mode =
 DIP_EXPORT Graph RegionAdjacencyGraph( Image const& labels, Measurement::IteratorFeature const& featureValues, String const& mode = "touching" );
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

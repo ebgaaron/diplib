@@ -37,7 +37,6 @@ class DIP_NO_EXPORT PixelTable;
 
 
 /// \addtogroup infrastructure
-/// \{
 
 /// \brief Represents the shape and size of a filtering kernel.
 ///
@@ -269,7 +268,7 @@ class DIP_NO_EXPORT Kernel {
       }
 };
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

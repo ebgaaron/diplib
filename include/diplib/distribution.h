@@ -33,7 +33,6 @@ namespace dip {
 class DIP_NO_EXPORT Histogram;
 
 /// \addtogroup analysis
-/// \{
 
 
 /// \brief Holds probability density functions and other types of distribution
@@ -494,7 +493,7 @@ inline std::ostream& operator<<(
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

@@ -39,7 +39,7 @@
 namespace dip {
 
 
-/// \defgroup types Pixel data types
+/// \group types Pixel data types
 /// \ingroup infrastructure
 /// \brief Types used for image samples (pixels), and related support functionality
 ///
@@ -93,9 +93,7 @@ namespace dip {
 /// <tr style='font-size:70%;'><th>`DT_DCOMPLEX` <td> `DT_SINT64` <td> `DT_DCOMPLEX` <td> `DT_DFLOAT` <td> `DT_DFLOAT` <td> `DT_DCOMPLEX` <td> `DT_DFLOAT` <td> `DT_DCOMPLEX` <td> `DT_DCOMPLEX` <td> `DT_DCOMPLEX`
 /// </table>
 /// \m_enddiv
-///
-/// \{
-
+/// \addtogroup
 
 //
 // The DataType class.
@@ -602,8 +600,6 @@ constexpr DataType MakeDataType( dip::sint ) { return DataType::DT::SINT64; }
 
 } // namespace detail
 
-/// \cond
-
 template< typename T >
 constexpr DataType::DataType( T v ) : dt( detail::MakeDataType( v ).dt ) {}
 
@@ -616,8 +612,6 @@ static_assert( sizeof( unsigned long ) == 8 || sizeof( unsigned long ) == 4, "un
 constexpr DataType::DataType( unsigned long ) : dt( sizeof( unsigned long ) == 8 ? DataType::DT::UINT64 : DataType::DT::UINT32 ) {}
 static_assert( sizeof( long ) == 8 || sizeof( long ) == 4, "long type is not 32 nor 64 bits" );
 constexpr DataType::DataType( long ) : dt( sizeof( long ) == 8 ? DataType::DT::SINT64 : DataType::DT::SINT32 ) {}
-
-/// \endcond
 
 //
 // Constants that people will use where a DataType is needed
@@ -639,7 +633,7 @@ constexpr DataType DT_DCOMPLEX{ DataType::DT::DCOMPLEX };
 
 constexpr DataType DT_LABEL = DT_UINT32; ///< Type currently used for all labeled images, see `dip::LabelType`.
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

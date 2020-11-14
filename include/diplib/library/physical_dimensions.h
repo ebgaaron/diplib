@@ -41,11 +41,10 @@
 
 namespace dip {
 
-/// \defgroup physical_dimensions Physical dimensions
+/// \group physical_dimensions Physical dimensions
 /// \ingroup infrastructure
 /// \brief Support for units, physical quantities and pixel sizes.
-/// \{
-
+/// \addtogroup
 
 /// \brief Encapsulates the concepts of physical units, using SI units.
 ///
@@ -1033,7 +1032,7 @@ inline void swap( PixelSize& v1, PixelSize& v2 ) {
    v1.swap( v2 );
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

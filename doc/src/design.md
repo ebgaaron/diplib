@@ -1,21 +1,22 @@
-# DIPlib 3 design decisions {#design}
+\comment DIPlib 3.0
 
-[//]: # (DIPlib 3.0)
+\comment (c)2014-2020, Cris Luengo.
+\comment Based on original DIPlib code: (c)1995-2014, Delft University of Technology.
 
-[//]: # ([c]2014-2017, Cris Luengo.)
-[//]: # (Based on original DIPlib code: [c]1995-2014, Delft University of Technology.)
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
 
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
+
+\page design DIPlib 3 design decisions
 
 This page gives reasons behind some of the design choices of *DIPlib 3*.
 Many of these decisions are inherited from the previous version of the library,
@@ -23,7 +24,8 @@ and some new ones are made possible by the port to C++.
 
 \tableofcontents
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section design_function_signatures Function signatures
 
@@ -87,7 +89,7 @@ However, if a function `Filter( in, out )` exists, then you can assume that
 there will also be a function `out = Filter( in )`.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section design_method_vs_function Class method vs function
 
@@ -121,7 +123,8 @@ version of that that ignores *ITK*'s templates and processing pipeline):
     outim = dip::Gauss( image, FloatArray{ 5, 1 } );
 ```
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section design_dynamic_types Compile-time vs run-time pixel type identification
 
@@ -168,7 +171,7 @@ Such a template is always a trivial function that simplifies the library user's
 code.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section design_options Passing options to a function
 
@@ -195,11 +198,11 @@ specific string is given or not.
 However, for infrastructure functions not typically exposed in interfaces (i.e.
 the functions that *DIPlib* uses internally to do its work) we do define
 numeric constants for options. For example, see the enumerator `dip::Option::ThrowException`,
-or any of the flags defined through `#DIP_DECLARE_OPTIONS`. These are more efficient
+or any of the flags defined through `DIP_DECLARE_OPTIONS`. These are more efficient
 in use and equally convenient if limited to the C++ code.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section design_const_correctness Const correctness
 
@@ -247,7 +250,7 @@ principle as with the `dip::Image` object: non-`const` data access is always all
 *DIPlib* has an explicit policy to not to change data of a `const` object.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section design_frameworks Frameworks
 
@@ -294,7 +297,7 @@ simpler and more straight-forward, and thus more accessible. This was the main r
 for us to choose the approach we chose.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section design_multithreading Multithreading
 

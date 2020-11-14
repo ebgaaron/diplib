@@ -38,12 +38,12 @@ namespace dip {
 // Basic image queries
 //
 
-/// \defgroup math_statistics Statistics
+/// \group math_statistics Statistics
 /// \ingroup math
 /// \brief %Image sample statistics.
 ///
 /// See also \ref math_projection.
-/// \{
+/// \addtogroup
 
 #define DIP_DEFINE_VIEW_FUNCTION( name, ret_type ) \
 inline ret_type name( Image::View const& in ) { \
@@ -150,17 +150,17 @@ DIP_EXPORT MomentAccumulator Moments( Image const& in, Image const& mask = {} );
 
 #undef DIP_DEFINE_VIEW_FUNCTION
 
-/// \}
+/// \endgroup
 
 
 //
 // The following functions project along one or more (or all) dimensions
 //
 
-/// \defgroup math_projection Projection operators
+/// \group math_projection Projection operators
 /// \ingroup math
 /// \brief Operators that project the image data onto fewer spatial dimensions, computing image statistics.
-/// \{
+/// \addtogroup
 
 #define DIP_DEFINE_PROJECTION_FUNCTIONS( name ) \
 inline Image name( Image const& in, Image const& mask = {}, BooleanArray const& process = {} ) { \
@@ -753,7 +753,7 @@ inline Image PositionMedian( Image const& in, Image const& mask = {}, dip::uint 
 ///
 /// The output data type is DFLOAT for non-complex inputs and DCOMPLEX for complex inputs.
 ///
-/// \see dip::RadialMean, dip::GetCenter, dip::Sum
+/// \see dip::RadialMean, dip::Image::GetCenter, dip::Sum
 DIP_EXPORT void RadialSum(
       Image const& in,
       Image const& mask,
@@ -788,7 +788,7 @@ inline Image RadialSum(
 ///
 /// The output data type is DFLOAT for non-complex inputs and DCOMPLEX for complex inputs.
 ///
-/// \see dip::RadialSum, dip::GetCenter, dip::Mean
+/// \see dip::RadialSum, dip::Image::GetCenter, dip::Mean
 DIP_EXPORT void RadialMean(
       Image const& in,
       Image const& mask,
@@ -823,7 +823,7 @@ inline Image RadialMean(
 ///
 /// The output data type is equal to the input data type.
 ///
-/// \see dip::RadialMaximum, dip::GetCenter, dip::Minimum
+/// \see dip::RadialMaximum, dip::Image::GetCenter, dip::Minimum
 DIP_EXPORT void RadialMinimum(
       Image const& in,
       Image const& mask,
@@ -858,7 +858,7 @@ inline Image RadialMinimum(
 ///
 /// The output data type is equal to the input data type.
 ///
-/// \see dip::RadialMinimum, dip::GetCenter, dip::Maximum
+/// \see dip::RadialMinimum, dip::Image::GetCenter, dip::Maximum
 DIP_EXPORT void RadialMaximum(
       Image const& in,
       Image const& mask,
@@ -879,17 +879,17 @@ inline Image RadialMaximum(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 
 //
 // Error measures
 //
 
-/// \defgroup math_error Error measures
+/// \group math_error Error measures
 /// \ingroup math
 /// \brief Quantifying the difference between images.
-/// \{
+/// \addtogroup
 
 /// \brief Calculates the mean error difference between corresponding sample values of `in` and `reference`.
 ///
@@ -1208,7 +1208,7 @@ inline dfloat Entropy( Image::View const& in, dip::uint nBins = 256 ) {
 /// \endliterature
 DIP_EXPORT dfloat EstimateNoiseVariance( Image const& in, Image const& mask = {} );
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

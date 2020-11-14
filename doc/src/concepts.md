@@ -1,28 +1,29 @@
-# Assorted concepts used in DIPlib 3 {#concepts}
+\comment DIPlib 3.0
 
-[//]: # (DIPlib 3.0)
+\comment (c)2016-2020, Cris Luengo.
+\comment Based on original DIPlib code: (c)1995-2014, Delft University of Technology.
 
-[//]: # ([c]2016-2018, Cris Luengo.)
-[//]: # (Based on original DIPlib code: [c]1995-2014, Delft University of Technology.)
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
 
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
+
+\page concepts Assorted concepts used in DIPlib 3
 
 This page describes assorted concepts used in *DIPlib 3*.
 
 \tableofcontents
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section connectivity Connectivity
 
@@ -38,7 +39,7 @@ of 2 leads to 8 nearest neighbors (the edge and vertex neighbors).
 We use negative values for connectivity in some algorithms, in e.g. the binary dilation.
 These indicate alternating connectivities, which leads to more isotropic shapes than
 using the same connectivity for all iterations. These alternating connectivities are
-available only if the function takes a `dip::sint` as connectivity parameter.
+available only if the function takes a \ref dip::sint as connectivity parameter.
 
 In terms of the classical connectivity denominations we have, in 2D:
 
@@ -64,7 +65,7 @@ Some functions will interpret a connectivity of 0 to mean the maximum connectivi
 value that changes depending on the image dimensionality.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section aliasing Handling input and output images that alias each other
 
@@ -113,10 +114,10 @@ necessary:
     }
 ```
 
-Note that the `dip::Framework` functions take care of this.
+Note that the \ref dip::Framework functions take care of this.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section coordinates_origin Coordinate system origin
 
@@ -133,11 +134,11 @@ that determines which coordinate system to use. The value `"right"` (the
 default) places the origin in the same location as `dip::FourierTransform`,
 `dip::Rotation`, etc.
 
-The function `dip::Image::GetCenter` (using the default value for its input
+The function \ref dip::Image::GetCenter (using the default value for its input
 argument) returns the coordinates of the central pixel as a floating-point array.
 
 
-[//]: # (--------------------------------------------------------------)
+\comment --------------------------------------------------------------
 
 \section normal_strides Normal strides
 

@@ -32,9 +32,9 @@
 namespace dip {
 
 
-/// \defgroup transform Transforms
+/// \group transform Transforms
 /// \brief The Fourier and other transforms.
-/// \{
+/// \addtogroup
 
 
 /// \brief Computes the forward and inverse Fourier Transform
@@ -196,7 +196,7 @@ inline Image StationaryWaveletTransform(
 }
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

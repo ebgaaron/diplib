@@ -32,10 +32,9 @@
 namespace dip {
 
 
-/// \defgroup microscopy Microscopy
+/// \group microscopy Microscopy
 /// \brief Assorted tools useful in microscopy, some presumably also in astronomy and other applications.
-/// \{
-
+/// \addtogroup
 
 /// \brief Applies a logarithmic mapping to a transmittance image to obtain an absorbance image
 ///
@@ -718,7 +717,7 @@ inline Image SimulatedAttenuation(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

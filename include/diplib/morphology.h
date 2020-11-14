@@ -36,11 +36,10 @@ namespace dip {
 class DIP_NO_EXPORT Kernel;
 
 
-/// \defgroup morphology Morphological filtering
+/// \group morphology Morphological filtering
 /// \ingroup filtering
 /// \brief Morphological filters for smoothing, sharpening, detection and more.
-/// \{
-
+/// \addtogroup
 
 /// \brief Represents the shape and size of a structuring element.
 ///
@@ -855,18 +854,15 @@ inline Image RankMaxOpening(
    return out;
 }
 
-/// \}
-
 
 //
 // Priority-queue--based algorithms
 //
 
 
-/// \addtogroup segmentation
-/// \{
-
 /// \brief Computes the watershed of `in` within `mask`, with on-line merging of regions.
+///
+/// \ingroup segmentation
 ///
 /// The watershed is a segmentation algorithm that divides the image according to its grey-value
 /// ridges.
@@ -942,6 +938,8 @@ inline Image Watershed(
 
 /// \brief Computes the watershed of `in` within `mask`, starting at `seeds`, with on-line merging of regions.
 ///
+/// \ingroup segmentation
+///
 /// `seeds` is a binary or labeled image (if binary, it is labeled using `connectivity`). These labels are
 /// iteratively expanded in the watershed order (i.e. pixels that have a low value in `in` go first) until
 /// they meet. Pixels where two regions meet are marked as the watershed lines. `seeds` is commonly used
@@ -997,6 +995,8 @@ inline Image SeededWatershed(
 
 /// \brief Computes the compact watershed of `in` within `mask`, starting at `seeds`.
 ///
+/// \ingroup segmentation
+///
 /// `seeds` is a binary or labeled image (if binary, it is labeled using `connectivity`). These labels are
 /// iteratively expanded in the watershed order (i.e. pixels that have a low value in `in` go first), modified
 /// with a compactness term, until they meet. Pixels where two regions meet are marked as the watershed lines.
@@ -1041,6 +1041,8 @@ inline Image CompactWatershed(
 }
 
 /// \brief Computes the stochastic watershed of `in`.
+///
+/// \ingroup segmentation
 ///
 /// The stochastic watershed is computed by applying a watershed with randomly placed seeds `nIterations` times,
 /// and adding the results. The output is an image where each pixel's value is the likelihood that it belongs to
@@ -1106,6 +1108,8 @@ inline Image StochasticWatershed(
 
 /// \brief Marks significant local minima.
 ///
+/// \ingroup segmentation
+///
 /// This algorithm works exactly like `dip::Watershed` with the `"fast"` flag set. All pixels with a value
 /// equal to the lowest value within each watershed basin form a local minimum. Note that they can form
 /// disconnected regions, use the `"labels"` flag to recognize such disconnected regions as a single local
@@ -1116,7 +1120,7 @@ inline Image StochasticWatershed(
 ///
 /// See \ref connectivity for information on the connectivity parameter.
 ///
-/// \see dip::WatershedMaxima, dip::Minima, dip::Maxima.
+/// \see dip::WatershedMaxima, dip::Minima, dip::Maxima
 DIP_EXPORT void WatershedMinima(
       Image const& in,
       Image const& mask,
@@ -1141,6 +1145,8 @@ inline Image WatershedMinima(
 
 /// \brief Marks significant local maxima.
 ///
+/// \ingroup segmentation
+///
 /// This algorithm works exactly like `dip::Watershed` with the `"fast"` flag set. All pixels with a value
 /// equal to the highest value within each watershed basin form a local maximum. Note that they can form
 /// disconnected regions, use the `"labels"` flag to recognize such disconnected regions as a single local
@@ -1151,7 +1157,7 @@ inline Image WatershedMinima(
 ///
 /// See \ref connectivity for information on the connectivity parameter.
 ///
-/// \see dip::WatershedMinima, dip::Maxima, dip::Minima.
+/// \see dip::WatershedMinima, dip::Maxima, dip::Minima
 DIP_EXPORT void WatershedMaxima(
       Image const& in,
       Image const& mask,
@@ -1176,13 +1182,15 @@ inline Image WatershedMaxima(
 
 /// \brief Marks local minima.
 ///
+/// \ingroup segmentation
+///
 /// This algorithm finds single pixels or plateaus (connected groups of pixels with identical value) that are
 /// surrounded by pixels with a higher value. If `output` is `"binary"`, the result is a binary image where these
 /// pixels and plateaus are set. If `output` is `"labels"`, the result is a labeled image.
 ///
 /// See \ref connectivity for information on the connectivity parameter.
 ///
-/// \see dip::Maxima, dip::WatershedMinima, dip::WatershedMaxima.
+/// \see dip::Maxima, dip::WatershedMinima, dip::WatershedMaxima
 DIP_EXPORT void Minima(
       Image const& in,
       Image& out,
@@ -1201,13 +1209,15 @@ inline Image Minima(
 
 /// \brief Marks local maxima.
 ///
+/// \ingroup segmentation
+///
 /// This algorithm finds single pixels or plateaus (connected groups of pixels with identical value) that are
 /// surrounded by pixels with a lower value. If `output` is `"binary"`, the result is a binary image where these
 /// pixels and plateaus are set. If `output` is `"labels"`, the result is a labeled image.
 ///
 /// See \ref connectivity for information on the connectivity parameter.
 ///
-/// \see dip::Minima, dip::WatershedMaxima, dip::WatershedMinima.
+/// \see dip::Minima, dip::WatershedMaxima, dip::WatershedMinima
 DIP_EXPORT void Maxima(
       Image const& in,
       Image& out,
@@ -1224,11 +1234,6 @@ inline Image Maxima(
    return out;
 }
 
-/// \}
-
-
-/// \addtogroup morphology
-/// \{
 
 /// \brief Grey-value skeleton (2D only).
 ///
@@ -1373,7 +1378,7 @@ inline Image HMinima(
 ///     HMaxima = dip::MorphologicalReconstruction( in - h, in, connectivity, "dilation" );
 /// ```
 ///
-/// \see dip::MorphologicalReconstruction, dip::Maxima, dip::Hminima
+/// \see dip::MorphologicalReconstruction, dip::Maxima, dip::HMinima
 inline void HMaxima(
       Image const& in,
       Image& out,
@@ -1844,7 +1849,7 @@ inline Image HitAndMiss(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

@@ -1,0 +1,16 @@
+# dox++ configuration file for DIPlib
+[input]
+root directory = ../include/
+header files = ../include/*.h ../include/diplib/library/*.h ../include/diplib/*.h ../include/diplib/viewer/*.h
+markdown files = src/*.md src/*/*.md
+tab size = 3
+
+[output]
+filename = diplib_docs.json
+use typewriter font = yes
+log level = info
+json formatting = readable
+
+[clang]
+compiler flags = -std=c++14 -DDIP_CONFIG_FAKE_DOCUMENTATION
+include directories = ../include/ /Applications/MATLAB_R2017a.app/extern/include/ /usr/local/include/opencv4/ /usr/local/include/

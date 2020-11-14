@@ -33,9 +33,9 @@
 namespace dip {
 
 
-/// \defgroup distance Distance transforms
+/// \group distance Distance transforms
 /// \brief Various distance transforms.
-/// \{
+/// \addtogroup
 
 /// \brief Euclidean distance transform
 ///
@@ -251,7 +251,7 @@ inline Image GeodesicDistanceTransform(
    return out;
 }
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

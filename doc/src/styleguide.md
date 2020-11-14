@@ -1,21 +1,22 @@
-# Style guide for contributors {#styleguide}
+\comment DIPlib 3.0
 
-[//]: # (DIPlib 3.0)
+\comment (c)2016-2020, Cris Luengo.
+\comment Based on original DIPlib code: (c)1995-2014, Delft University of Technology.
 
-[//]: # ([c]2016-2017, Cris Luengo.)
-[//]: # (Based on original DIPlib code: [c]1995-2014, Delft University of Technology.)
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
 
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
+
+\page styleguide Style guide for contributors
 
 When contributing to *DIPlib*, please follow the style and layout of other files.
 Specifically:
@@ -55,7 +56,7 @@ Specifically:
   use underscores except for in a few special cases. Private class member variables
   end in an underscore. Constants are in all uppercase letters, with underscores to
   separate words if necessary. Internal names (the ones that are not meant to be used
-  directly by library users), if public, do not have Doxygen documentation and clearly
+  directly by library users), if public, do not have documentation and clearly
   warn the user by their name (such as `dip::Image::ShiftOriginUnsafe`), or are declared
   in the `dip::detail` namespace; private internal names (declared static or inside
   an unnamed namespace) do not have any specific requirements.

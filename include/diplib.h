@@ -44,7 +44,7 @@
 /// This header file is the core of *DIPlib*. It declares all classes, functions,
 /// macros and constants that form the basic library infrastructure. It does so
 /// by including all the header files in the \link_to_include_diplib_library directory.
-/// Everything is declared within the `#dip` namespace.
+/// Everything is declared within the \ref dip namespace.
 ///
 /// To access image processing or analysis functionality, include their
 /// corresponding header files.
@@ -52,9 +52,9 @@
 /// \brief The `dip` namespace contains all the library functionality.
 namespace dip {
 
-/// \defgroup infrastructure The library infrastructure
+/// \group infrastructure The library infrastructure
 /// \brief The nuts and bolts that make it all work
-/// \{
+/// \addtogroup
 
 /// \brief Holds information about the *DIPlib* binary.
 ///
@@ -90,12 +90,15 @@ struct DIP_NO_EXPORT LibraryInformation {
 /// \brief Constant that holds information about the *DIPlib* binary.
 DIP_EXPORT extern const LibraryInformation libraryInformation;
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 
-/// \defgroup filtering Filtering
+/// \group filtering Filtering
 /// \brief Linear and non-linear filters for smoothing, sharpening and detection
+
+/// \group interfaces Interfaces
+/// \brief Interfaces between DIPlib and other libraries/packages
 
 /// \dir include/diplib
 /// \brief Contains include files for the various modules in DIPlib

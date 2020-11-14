@@ -1,20 +1,21 @@
-# Why tensors? {#why_tensors}
+\comment DIPlib 3.0
 
-[//]: # (DIPlib 3.0)
+\comment (c)2017-2020, Cris Luengo.
 
-[//]: # ([c]2017-2018, Cris Luengo.)
+\comment Licensed under the Apache License, Version 2.0 [the "License"];
+\comment you may not use this file except in compliance with the License.
+\comment You may obtain a copy of the License at
+\comment 
+\comment    http://www.apache.org/licenses/LICENSE-2.0
+\comment 
+\comment Unless required by applicable law or agreed to in writing, software
+\comment distributed under the License is distributed on an "AS IS" BASIS,
+\comment WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+\comment See the License for the specific language governing permissions and
+\comment limitations under the License.
 
-[//]: # (Licensed under the Apache License, Version 2.0 [the "License"];)
-[//]: # (you may not use this file except in compliance with the License.)
-[//]: # (You may obtain a copy of the License at)
-[//]: # ()
-[//]: # (   http://www.apache.org/licenses/LICENSE-2.0)
-[//]: # ()
-[//]: # (Unless required by applicable law or agreed to in writing, software)
-[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
-[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
-[//]: # (See the License for the specific language governing permissions and)
-[//]: # (limitations under the License.)
+
+\page why_tensors Why tensors?
 
 Images in *DIPlib 3* have pixel values generalized to tensors. Currently only
 tensors of order up to 2 are supported. Thus, pixel values can be scalar (0<sup>th</sup>-order
@@ -27,7 +28,8 @@ representation.
 
 \tableofcontents
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section stain_unmixing Stain unmixing
 
@@ -80,9 +82,10 @@ image created in memory). Next, note that the operation `img / I` is a per-eleme
 division, such that `img[0]` (red channel) is divided by `I[0]`, `img[1]` by `I[1]`,
 and `img[2]` by `I[2]`. In contrast, `U * t` is a matrix multiplication.
 
-The above is implemented in the functions `dip::BeerLambertMapping` and `dip::UnmixStains`.
+The above is implemented in the functions \ref dip::BeerLambertMapping and \ref dip::UnmixStains.
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section structure_tensor The structure tensor
 
@@ -138,10 +141,11 @@ Note that it is possible to compute the `anisotropy` image more efficiently
 (running through the image `e` once instead of three times, and avoiding
 the storage of two intermediate images). See \ref iterators.
 
-The above is implemented in the functions `dip::StructureTensor` and
-`dip::StructureTensorAnalysis`.
+The above is implemented in the functions \ref dip::StructureTensor and
+\ref dip::StructureTensorAnalysis.
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section harris The Harris corner detector
 
@@ -169,9 +173,10 @@ Note again that is is possible to compute `corners` more efficiently
 by \ref iterators. That way, one can run through the image `S` only once,
 and avoid the temporary intermediate images.
 
-The above is implemented in the function `dip::HarrisCornerDetector`.
+The above is implemented in the function \ref dip::HarrisCornerDetector.
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section optical_flow Lucas-Kanade optical flow
 
@@ -194,19 +199,20 @@ the third dimension is time, we can write:
 ```
 
 The most complicated function call is on the first line. Up to now we had
-been using all the default parameters to `dip::Gradient`, but now we need
+been using all the default parameters to \ref dip::Gradient, but now we need
 to set the `process` parameter: a boolean array indicating along which
 dimensions to compute the derivative. Since this parameter is towards the
 end of the parameter list, we must fill out the other default values,
 which we simply copied from the function declaration.
 
-[//]: # (--------------------------------------------------------------)
+
+\comment --------------------------------------------------------------
 
 \section diffusion Anisotropic diffusion
 
 There are many more examples where per-pixel matrix algebra is useful and
 *DIPlib* allows simple, efficient implementation. The last example we'll
-give here is from the function `dip::CoherenceEnhancingDiffusion`.
+give here is from the function \ref dip::CoherenceEnhancingDiffusion.
 
 The diffusion equation can be discretized along the time axis to yield
 an iterative update process described by

@@ -63,11 +63,13 @@ struct numeric_limits< dip::bin > {
 namespace dip {
 
 
-/// \defgroup sample_operators Saturated arithmetic and casts
+/// \group sample_operators Saturated arithmetic and casts
 /// \ingroup infrastructure
 /// \brief These operators operate on single sample values, implementing saturated arithmetic and type casting.
 ///
-/// `%dip::clamp_cast` is an operator that returns the input value cast to a different
+/// # Type casting
+///
+/// `dip::clamp_cast` is an operator that returns the input value cast to a different
 /// type, clamped to the range of values representable by that output type. This
 /// is also often referred to as saturated cast. Most *DIPlib* functions take care of properly
 /// clamping values when casting pixel values. This typically is more intuitive and useful
@@ -78,7 +80,7 @@ namespace dip {
 /// When casting from a floating-point number to an integer, the decimals are truncated, as typically
 /// done in C++.
 ///
-/// `%dip::clamp_cast` is defined as a series of overloaded template functions with specializations.
+/// `dip::clamp_cast` is defined as a series of overloaded template functions with specializations.
 /// The input argument type is used in overload resolution, the output type is the template
 /// parameter, and should be specified between angled brackets after the function name,
 /// much like the standard `static_cast` and similar:
@@ -87,8 +89,8 @@ namespace dip {
 ///     uint8 u = dip::clamp_cast< dip::uint8 >( -54.6 );
 /// ```
 ///
-/// `%dip::clamp_cast` is made available when including `diplib.h`.
-/// \{
+/// `dip::clamp_cast` is made available when including \ref "diplib.h".
+/// \addtogroup
 // TODO: Do we want to round the float values instead?
 
 namespace detail {
@@ -223,9 +225,9 @@ constexpr inline const ValueType clamp_upper( ValueType value, LimitType ) {
 
 /// \brief Casts a value of any pixel type to any other pixel type, clamping it to the destination range.
 template< typename TargetType, typename SourceType >
-constexpr inline const TargetType clamp_cast( SourceType v ) {}
+constexpr inline const TargetType clamp_cast( SourceType v );
 
-#endif
+#else // DIP_CONFIG_FAKE_DOCUMENTATION
 
 // Cast non-complex value to float
 template< typename TargetType, typename SourceType,
@@ -283,7 +285,9 @@ constexpr inline TargetType clamp_cast( std::complex< SourceType > v ) {
    return { static_cast< typename TargetType::value_type >( v.real() ), static_cast< typename TargetType::value_type >( v.imag() ) };
 }
 
-/// \}
+#endif // DIP_CONFIG_FAKE_DOCUMENTATION
+
+/// \endgroup
 
 namespace detail {
 template< typename T >

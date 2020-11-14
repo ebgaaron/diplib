@@ -33,7 +33,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 
 /// \brief An STL-like data structure for the union-find algorithm.
@@ -237,7 +236,7 @@ class SimpleUnionFind : public UnionFind< IndexType_, detail::DummyUnionFindData
 };
 
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

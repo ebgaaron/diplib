@@ -37,7 +37,6 @@ namespace dip {
 
 
 /// \addtogroup infrastructure
-/// \{
 
 /// \brief Base class for conversion between two color spaces.
 ///
@@ -303,7 +302,7 @@ class DIP_NO_EXPORT ColorSpaceManager {
       DIP_NO_EXPORT std::vector< dip::uint > FindPath( dip::uint start, dip::uint stop ) const;
 };
 
-/// \}
+/// \endgroup
 
 } // namespace dip
 

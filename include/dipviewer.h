@@ -28,14 +28,13 @@
 
 namespace dip {
 
+/// \addtogroup viewer
+
 /// \brief Contains all functionality for \ref viewer.
 namespace viewer {
 
 class SliceViewer;
 class ImageViewer;
-
-/// \addtogroup viewer
-/// \{
 
 /// \brief Show an image in the slice viewer.
 ///
@@ -98,7 +97,7 @@ DIPVIEWER_EXPORT void Draw();
 /// at an appropriate time after calling `dip::viewer::Show` or `dip::viewer::ShowSimple`.
 DIPVIEWER_EXPORT void CloseAll();
 
-/// \}
+/// \endgroup
 
 }} // namespace dip::viewer
 
